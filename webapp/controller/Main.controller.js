@@ -17,7 +17,7 @@ sap.ui.define([
 				expanded : false,
 				key: "page1"
 			}, {
-				title: "Zahlwege",
+				title: "LSV-Lastschriften",
 				icon: "sap-icon://money-bills",
 				tooltip: "Zahlwege",
 				expanded : false,

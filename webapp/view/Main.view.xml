@@ -18,17 +18,12 @@
 						<tnt:NavigationListItem text="{title}" key="{key}" enabled="{enabled}"></tnt:NavigationListItem>
 					</tnt:NavigationListItem>
 				</tnt:NavigationList>
-				<tnt:fixedItem>
-					<tnt:NavigationList items="{path: '/fixedNavigation'}">
-						<tnt:NavigationListItem text="{title}" icon="{icon}"></tnt:NavigationListItem>
-					</tnt:NavigationList>
-				</tnt:fixedItem>
 			</tnt:SideNavigation>
 		</tnt:sideContent>
 		<tnt:mainContents>
 			<core:Fragment fragmentName="com.convista.view.Auswahl" type="XML"/>
 			<NavContainer id="pageContainer" width="100%" height="100%" class="navContainerControl sapUiSmallMarginBottom">
-				<Page id="page1" height="100%" class="sapUiFioriObjectPage" showHeader="false" showFooter="false" >
+				<Page id="page1" height="100%" class="sapUiFioriObjectPage" showHeader="false" showFooter="false">
 					<content>
 						<l:FixFlex>
 							<l:fixContent>
@@ -77,44 +72,120 @@
 					</content>
 				</Page>
 				<Page id="page2" showHeader="false" horizontal="true" vertical="true" height="100%">
-					<Panel id='contentPanel2' class="panelStyle" headerText="LSV-Lastschriften" expanded="true" width="auto">
-						<HBox class="settingsHBox">
-							<VBox class='settingsBox' width="20%">
-								<Label text="Anzahl Lastschriften" id="anzahlLastschrift" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="42.232"/>
-							</VBox>
-							<VBox class='settingsBox' width="20%">
-								<Label text="Volumen Lastschrifteinzüge" id="labellastschrift" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
-							</VBox>
-							<VBox class='settingsBox' width="20%">
-								<Label text="LSV Quote" id="labelquote" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="0,3"/>
-							</VBox>
-						</HBox>
-					</Panel>
+					<content>
+						<l:FixFlex>
+							<l:fixContent>
+								<Panel id='contentPanel2' class="panelStyle" headerText="LSV-Lastschriften" expanded="true" width="auto">
+									<HBox class="settingsHBox">
+										<VBox class='settingsBox' width="20%">
+											<Label text="Anzahl Lastschriften" id="anzahlLastschrift" class="settingsLabel"/>
+											<ObjectNumber class="sapUiSmallMarginBottom" number="42.232"/>
+										</VBox>
+										<VBox class='settingsBox' width="20%">
+											<Label text="Volumen Lastschrifteinzüge" id="labellastschrift" class="settingsLabel"/>
+											<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
+										</VBox>
+										<VBox class='settingsBox' width="20%">
+											<Label text="LSV Quote" id="labelquote" class="settingsLabel"/>
+											<ObjectNumber class="sapUiSmallMarginBottom" number="0,3"/>
+										</VBox>
+									</HBox>
+								</Panel>
+							</l:fixContent>
+							<l:flexContent>
+								<ui.com:ChartContainer id="idChartContainerBarLine" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
+									showLegend="true" title="Umsatz">
+									<ui.com:content>
+										<ui.com:ChartContainerContent icon="sap-icon://column-chart-dual-axis" title="Combined Chart">
+											<ui.com:content>
+												<viz:Popover id="idPopOverBarLine"></viz:Popover>
+												<viz:VizFrame id="idVizFrameBarLine" uiConfig="{applicationSet:'fiori' }" height="100%" width="100%" vizType="combination">
+													<viz:dataset>
+														<viz.data:FlattenedDataset data="{/Lastschrift}">
+															<viz.data:dimensions>
+																<viz.data:DimensionDefinition name="month1" value="{month}"/>
+															</viz.data:dimensions>
+															<viz.data:measures>
+																<viz.data:MeasureDefinition name="Anzahl Lastschrift" value="{anzahlLastschrift}"/>
+															</viz.data:measures>
+															<viz.data:measures>
+																<viz.data:MeasureDefinition name="Volumen Lastschrift" value="{volumenLastschrift}"/>
+															</viz.data:measures>
+														</viz.data:FlattenedDataset>
+													</viz:dataset>
+													<viz:feeds>
+														<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Anzahl Lastschrift"/>
+														<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Volumen Lastschrift"/>
+														<viz.feeds:FeedItem id="feedCategoryAxisBarLine" uid="categoryAxis" type="Dimension" values="month1"/>
+													</viz:feeds>
+												</viz:VizFrame>
+											</ui.com:content>
+										</ui.com:ChartContainerContent>
+									</ui.com:content>
+								</ui.com:ChartContainer>
+							</l:flexContent>
+						</l:FixFlex>
+					</content>
 				</Page>
-				<Page id="page3" showHeader="false" horizontal="true" vertical="true" height="100%">
-					<Panel id='contentPanel3' class="panelStyle" headerText="Rückläufer" expanded="true" width="auto">
-						<HBox class="settingsHBox">
-							<VBox class='settingsBox' width="20%">
-								<Label text="Anzahl Rücklastschriften" id="anzahlRuecklast" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="19.232"/>
-							</VBox>
-							<VBox class='settingsBox' width="20%">
-								<Label text="Volumen Lastschrifteinzüge" id="volLastschrift" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
-							</VBox>
-							<VBox class='settingsBox' width="20%">
-								<Label text="Volumen Rückläufergebühr" id="ruechlaeufergeb" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="10.232,00" unit="EURO"/>
-							</VBox>
-							<VBox class='settingsBox' width="20%">
-								<Label text="Volumen Rückläufer - Quote" id="labelquote2" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="0,3"/>
-							</VBox>
-						</HBox>
-					</Panel>
+				<Page id="page3" showHeader="false" horizontal="true" vertical="true" height="100% ">
+					<content>
+						<l:FixFlex>
+							<l:fixContent>
+								<Panel id='contentPanel3' class="panelStyle" headerText="Rückläufer" expanded="true" width="auto">
+									<HBox class="settingsHBox">
+										<VBox class='settingsBox' width="20%">
+											<Label text="Anzahl Rücklastschriften" id="anzahlRuecklast" class="settingsLabel"/>
+											<ObjectNumber class="sapUiSmallMarginBottom" number="19.232"/>
+										</VBox>
+										<VBox class='settingsBox' width="20%">
+											<Label text="Volumen Lastschrifteinzüge" id="volLastschrift" class="settingsLabel"/>
+											<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
+										</VBox>
+										<VBox class='settingsBox' width="20%">
+											<Label text="Volumen Rückläufergebühr" id="ruechlaeufergeb" class="settingsLabel"/>
+											<ObjectNumber class="sapUiSmallMarginBottom" number="10.232,00" unit="EURO"/>
+										</VBox>
+										<VBox class='settingsBox' width="20%">
+											<Label text="Volumen Rückläufer - Quote" id="labelquote2" class="settingsLabel"/>
+											<ObjectNumber class="sapUiSmallMarginBottom" number="0,3"/>
+										</VBox>
+									</HBox>
+								</Panel>
+							</l:fixContent>
+							<l:flexContent>
+								<ui.com:ChartContainer id="idChartContainerBarLineRueck" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
+									showLegend="true" title="Umsatz">
+									<ui.com:content>
+										<ui.com:ChartContainerContent icon="sap-icon://column-chart-dual-axis" title="Combined Chart">
+											<ui.com:content>
+												<viz:Popover id="idPopOverBarLineRueck"></viz:Popover>
+												<viz:VizFrame id="idVizFrameBarLineRueck" uiConfig="{applicationSet:'fiori' }" height="100%" width="100%" vizType="combination">
+													<viz:dataset>
+														<viz.data:FlattenedDataset data="{/Rückläufer}">
+															<viz.data:dimensions>
+																<viz.data:DimensionDefinition name="month1" value="{month}"/>
+															</viz.data:dimensions>
+															<viz.data:measures>
+																<viz.data:MeasureDefinition name="Anzahl Rücklastschrift" value="{anzahlRücklastschrift}"/>
+															</viz.data:measures>
+															<viz.data:measures>
+																<viz.data:MeasureDefinition name="Volumen Rücklastschrift" value="{volumenRücklastschrift}"/>
+															</viz.data:measures>
+														</viz.data:FlattenedDataset>
+													</viz:dataset>
+													<viz:feeds>
+														<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Anzahl Rücklastschrift"/>
+														<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Volumen Rücklastschrift"/>
+														<viz.feeds:FeedItem id="feedCategoryAxisBarLineRueck" uid="categoryAxis" type="Dimension" values="month1"/>
+													</viz:feeds>
+												</viz:VizFrame>
+											</ui.com:content>
+										</ui.com:ChartContainerContent>
+									</ui.com:content>
+								</ui.com:ChartContainer>
+							</l:flexContent>
+						</l:FixFlex>
+					</content>
 				</Page>
 				<Page id="page4" showHeader="false" horizontal="true" vertical="true" height="100%">
 					<Panel id='contentPanel4' class="panelStyle" headerText="Klärbestand" expanded="true" width="auto">

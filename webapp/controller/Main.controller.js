@@ -36,14 +36,16 @@ sap.ui.define([
 		},
 
 		oVizFrame: null,
-
+		oVizFrameBarLine: null,
+		oVizFrameBarLineRueck: null,
+    
 		onInit: function(evt) {
 
 			this.modelNavi.setData(this.data);
 			this.getView().setModel(this.modelNavi);
 			this._setToggleButtonTooltip(!sap.ui.Device.system.desktop);
 			this.initCustomFormat();
-
+            // ab hier Bar Chart
 			var oVizFrame = this.oVizFrame = this.getView().byId("idVizFrame");
 			oVizFrame.setVizProperties({
 				plotArea: {
@@ -77,6 +79,78 @@ sap.ui.define([
 			var oPopOver = this.getView().byId("idPopOver");
 			oPopOver.connect(oVizFrame.getVizUid());
 			oPopOver.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
+			
+		  // ab hier Bar Line Chart Lastschrift
+			var oVizFrameBarLine = this.oVizFrameBarLine = this.getView().byId("idVizFrameBarLine");
+			oVizFrameBarLine.setVizProperties({
+				plotArea: {
+					dataLabel: {
+						formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2,
+						visible: true
+					}
+				},
+				valueAxis: {
+					label: {
+						formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2
+					},
+					title: {
+						visible: false
+					}
+				},
+				categoryAxis: {
+					title: {
+						visible: false
+					}
+				},
+				title: {
+					visible: false,
+					text: "Lastschrift"
+				}
+			});
+			var dataModelBarLine = new JSONModel("model/BarLineLastschrift.json");
+			dataModelBarLine.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
+			oVizFrameBarLine.setModel(dataModelBarLine);
+
+			var oPopOverBarLine = this.getView().byId("idPopOverBarLine");
+			oPopOverBarLine.connect(oVizFrameBarLine.getVizUid());
+			oPopOverBarLine.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
+			
+			
+			// ab hier Bar Line Chart Rüecklastschrift
+			var oVizFrameBarLineRueck = this.oVizFrameBarLineRueck = this.getView().byId("idVizFrameBarLineRueck");
+			oVizFrameBarLineRueck.setVizProperties({
+				plotArea: {
+					dataLabel: {
+						formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2,
+						visible: true
+					}
+				},
+				valueAxis: {
+					label: {
+						formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2
+					},
+					title: {
+						visible: false
+					}
+				},
+				categoryAxis: {
+					title: {
+						visible: false
+					}
+				},
+				title: {
+					visible: false,
+					text: "Rücklastschrift"
+				}
+			});
+			var dataModelBarLineRueck = new JSONModel("model/BarLineRuecklaeufer.json");
+			dataModelBarLineRueck.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
+			oVizFrameBarLineRueck.setModel(dataModelBarLineRueck);
+
+			var oPopOverBarLineRueck = this.getView().byId("idPopOverBarLineRueck");
+			oPopOverBarLineRueck.connect(oVizFrameBarLineRueck.getVizUid());
+			oPopOverBarLineRueck.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
+			
 			//Hide Settings Panel for phone
 			if (sap.ui.Device.system.phone) {
 				this.getView().byId("settingsPanel").setExpanded(false);

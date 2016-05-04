@@ -8,20 +8,32 @@
       "ui5ActiveVersion": null,
       "ui5VerSource": null,
       "isDefaultVersion": 0,
-      "urlParameters": [
-        {
-          "paramName": "",
-          "paramValue": ""
-        }
-      ],
+      "urlParameters": [],
       "urlParametersNotNeeded": false,
       "hashParameter": "",
       "backendSystem": [],
-      "appsVersion": [],
       "_metadata": {
-        "id": 4997717,
+        "id": 4600876,
         "runnerId": "webapprunner",
-        "displayName": "Run CCKP01 index.html 1"
+        "displayName": "Run CCKPI01"
+      }
+    },
+    {
+      "filePath": "/dist/index.html",
+      "previewMode": 0,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "urlParametersNotNeeded": false,
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "id": 8369545,
+        "runnerId": "webapprunner",
+        "displayName": "Run CCKPI01 dist index"
       }
     },
     {

@@ -26,7 +26,7 @@
 			</tnt:SideNavigation>
 		</tnt:sideContent>
 		<tnt:mainContents>
-	<!--		<core:Fragment fragmentName="com.convista.view.Auswahl" type="XML"/> -->
+			<core:Fragment fragmentName="com.convista.view.Auswahl" type="XML"/> 
 			<NavContainer id="pageContainer">
 				<pages>
 					<ScrollContainer id="page1" horizontal="true" vertical="true" height="100%" focusable="true">

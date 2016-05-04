@@ -1,0 +1,39 @@
+{
+	"Umsatz": [{
+		"month": "Jan",
+		"proMonat": "1586262"
+	}, {
+		"month": "Feb",
+		"proMonat": "2311609"
+	}, {
+		"month": "Mrz",
+		"proMonat": "1151051"
+	}, {
+		"month": "Apr",
+		"proMonat": "1393786"
+	}, {
+		"month": "Mai",
+		"proMonat": "2274018"
+	}, {
+		"month": "Juni",
+		"proMonat": "1774018"
+	}, {
+		"month": "Juli",
+		"proMonat": "1974018"
+	}, {
+		"month": "Aug",
+		"proMonat": "1274018"
+	}, {
+		"month": "Sep",
+		"proMonat": "1374014"
+	}, {
+		"month": "Okt",
+		"proMonat": "1574014"
+	}, {
+		"month": "Nov",
+		"proMonat": "1624084"
+	}, {
+		"month": "Dez",
+		"proMonat": "1114184"
+	}]
+}

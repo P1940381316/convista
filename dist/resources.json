@@ -1,0 +1,61 @@
+{
+    "resources": [
+        {
+            "name": "view/Main.view.xml"
+        },
+        {
+            "name": "view/CopyOfAuswahl.fragment.xml"
+        },
+        {
+            "name": "view/Auswahl.fragment.xml"
+        },
+        {
+            "name": "view/Lastschrift.view.xml"
+        },
+        {
+            "name": "controller/Main.controller.js"
+        },
+        {
+            "name": "controller/Lastschrift.controller.js"
+        },
+        {
+            "name": "i18n/i18n_en.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n_de_DE.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/BarJsonExample.json"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "preview_hidden.html"
+        },
+        {
+            "name": "sonstiges/CustomerFormat.js"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "neo-app.json"
+        }
+    ]
+}

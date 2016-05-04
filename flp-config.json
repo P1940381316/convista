@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "CCKPI01",
+        "description": "Trial CCKPI",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#CCKPI01-Display",
+        "navigationComponentName": "com.convista",
+        "intentSemanticObject": "CCKPI01",
+        "intentAction": "Display",
+        "html5ApplicationName": "cckpi01",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "62d22fc0-b64d-4714-a9bc-a7ee4eddb93e"
+        ],
+        "contentPackages": [
+            "5181caa0-2d18-46b8-9c5a-1d9297ab1835"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "CCKPI",
+        "subtitle": "Subtitle",
+        "searchKeywords": "CCKPI,Subtitle",
+        "displayIconUrl": "sap-icon://approvals",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

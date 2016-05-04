@@ -1,0 +1,69 @@
+{
+  "projectType": [
+    "sap.watt.uitools.ide.fiori",
+    "com.watt.common.builder.sapui5clientbuild"
+  ],
+  "build": {
+    "targetFolder": "dist",
+    "sourceFolder": "webapp",
+    "buildRequired": true,
+    "lastBuildDateTime": "Tue, 03 May 2016 10:00:18 GMT"
+  },
+  "generation": [
+    {
+      "templateId": "ui5template.basicSAPUI5ApplicationProject",
+      "templateVersion": "1.32.0",
+      "dateTimeStamp": "Mon, 25 Apr 2016 13:50:24 GMT"
+    },
+    {
+      "templateId": "ui5template.basicSAPUI5ApplicationComponent",
+      "templateVersion": "1.4.0",
+      "dateTimeStamp": "Wed, 27 Apr 2016 14:43:13 GMT"
+    }
+  ],
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "en,fr,de",
+    "defaultLanguage": "en",
+    "defaultI18NPropertyFile": "i18n.properties",
+    "resourceModelName": "i18n"
+  },
+  "codeCheckingTriggers": {
+    "notifyBeforePush": false,
+    "notifyBeforePushLevel": "Error",
+    "blockPush": false,
+    "blockPushLevel": "Error"
+  },
+  "basevalidator": {
+    "services": {
+      "xml": "fioriXmlAnalysis",
+      "js": "fioriJsValidator"
+    },
+    "validators": [
+      {
+        "validatorID": "fioriJsValidator",
+        "configuration": {
+          "rules": {
+            "linebreak-style": [
+              0,
+              "unix"
+            ]
+          },
+          "additionalRuleMetadata": {}
+        }
+      }
+    ]
+  },
+  "hcpdeploy": {
+    "account": "p1940381316trial",
+    "name": "cckpi01",
+    "lastVersionWeTriedToDeploy": "1.0.2"
+  },
+  "mockpreview": {
+    "mockUri": "",
+    "metadataFilePath": "",
+    "mockRequestsFilePath": "",
+    "loadJSONFiles": true,
+    "loadCustomRequests": false
+  }
+}

@@ -1,0 +1,75 @@
+<core:FragmentDefinition xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:fm="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="true" headerText="{i18n>setting}" width="auto">
+		<content>
+			<HBox class='settingsHBox'>
+				<VBox class='settingsBox' width="25%">
+					<Label text="Gesellschaft" id="label01" required="false" design="Bold" class='settingsLabel' labelFor="input01"/>
+					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item10" selectedItemId="item10" id="gesellschaft" width="90%">
+						<items>
+							<sap.ui.core:ListItem text="ConVista Deutschland" key="item1" id="item10"/>
+							<sap.ui.core:ListItem text="ConVista Spain" key="item2" id="item11"/>
+							<sap.ui.core:ListItem text="ConVista India" key="item3" id="item12"/>
+							<sap.ui.core:ListItem text="...." key="item4" id="item14"/>
+						</items>
+					</Select>
+				</VBox>
+				<VBox class='settingsBox' width="20%">
+					<Label text="Buchungskreis" id="label02" required="false" design="Bold" class='settingsLabel' labelFor="buchungskreis"/>
+					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item101" selectedItemId="item101" id="buchungskreis">
+						<items>
+							<sap.ui.core:ListItem text="CC01" key="item1" id="item101"/>
+							<sap.ui.core:ListItem text="DE02" key="item2" id="item111"/>
+							<sap.ui.core:ListItem text="SP05" key="item3" id="item121"/>
+							<sap.ui.core:ListItem text="...." key="item4" id="item141"/>
+						</items>
+					</Select>
+				</VBox>
+				<VBox class='settingsBox'>
+					<Label text="von Monat" id="label04" design="Bold" class="settingsLabel"/>
+					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item0011" selectedItemId="item0011" id="selectVonMonth">
+						<items>
+							<sap.ui.core:ListItem text="01" key="item1" id="item0011"/>
+							<sap.ui.core:ListItem text="02" key="item2" id="item0111"/>
+							<sap.ui.core:ListItem text="03" key="item3" id="item0211"/>
+							<sap.ui.core:ListItem text="04" key="item4" id="item0411"/>
+						</items>
+					</Select>
+				</VBox>
+				<VBox class='settingsBox' width="16%">
+					<Label text="von Jahr" id="label07" design="Bold" class="settingsLabel"/>
+					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item100" selectedItemId="item100" id="selectVonJahr">
+						<items>
+							<sap.ui.core:ListItem text="2012" key="item1" id="item100"/>
+							<sap.ui.core:ListItem text="2013" key="item2" id="item110"/>
+							<sap.ui.core:ListItem text="2014" key="item3" id="item130"/>
+							<sap.ui.core:ListItem text="2015" key="item4" id="item140"/>
+							<sap.ui.core:ListItem text="2016" key="item5" id="item150"/>
+						</items>
+					</Select>
+				</VBox>
+				<VBox class='settingsBox'>
+					<Label text="bis Monat" id="label09" design="Bold" class="settingsLabel"/>
+					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item1101" selectedItemId="item1101" id="bisMonat">
+						<items>
+							<sap.ui.core:ListItem text="01" key="item1" id="item1101"/>
+							<sap.ui.core:ListItem text="02" key="item2" id="item1111"/>
+							<sap.ui.core:ListItem text="03" key="item3" id="item1121"/></items>
+					</Select>
+				</VBox>
+				<VBox class='settingsBox' width="16%">
+					<Label text="bis Jahr" id="label017" design="Bold" class="settingsLabel"/>
+					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="__item1100" selectedItemId="__item1100" id="__select11">
+						<items>
+							<sap.ui.core:ListItem text="2012" key="item1" id="__item1100"/>
+							<sap.ui.core:ListItem text="2013" key="item2" id="__item1110"/>
+							<sap.ui.core:ListItem text="2014" key="item3" id="__item1130"/>
+							<sap.ui.core:ListItem text="2015" key="item4" id="__item1140"/>
+							<sap.ui.core:ListItem text="2016" key="item5" id="__item1150"/>
+						</items>
+					</Select>
+				</VBox>
+			</HBox>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

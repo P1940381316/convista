@@ -1,0 +1,127 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:fm="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:tnt="sap.tnt" controllerName="com.convista.controller.Main">
+	<tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" tooltip="Auswahl" type="Transparent" press="onSideNavButtonPress">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation expanded="false" itemSelect="onItemSelect" width="30%">
+				<tnt:NavigationList items="{path: '/navigation'}">
+					<tnt:NavigationListItem text="{title}" icon="{icon}" enabled="{enabled}" expanded="{expanded}" items="{items}" key="{key}">
+						<tnt:NavigationListItem text="{title}" key="{key}" enabled="{enabled}"></tnt:NavigationListItem>
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+				<tnt:fixedItem>
+					<tnt:NavigationList items="{path: '/fixedNavigation'}">
+						<tnt:NavigationListItem text="{title}" icon="{icon}"></tnt:NavigationListItem>
+					</tnt:NavigationList>
+				</tnt:fixedItem>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+	<!--		<core:Fragment fragmentName="com.convista.view.Auswahl" type="XML"/> -->
+			<NavContainer id="pageContainer">
+				<pages>
+					<ScrollContainer id="page1" horizontal="true" vertical="true" height="100%" focusable="true">
+						<content>
+							<Panel id='contentPanel1' class="panelStyle" headerText="Zahlungseingang" expanded="true" width="auto">
+								<HBox class="settingsHBox">
+									<VBox class='settingsBox' width="20%">
+										<Label text="Anzahl Zahlungseingänge" id="label01Za" class="settingsLabel"/>
+										<ObjectNumber class="sapUiSmallMarginBottom" number="42.232"/>
+									</VBox>
+									<VBox class='settingsBox' width="20%">
+										<Label text="Volumen Zahlungseingänge" id="label01Zb" class="settingsLabel"/>
+										<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
+									</VBox>
+								</HBox>
+							</Panel>
+							<viz:Popover id="idPopOver"></viz:Popover>
+							<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori', 'showErrorMessage':true }" height='100%' width="100%" vizType="column">
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{/Umsatz}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="month1" value="{month}"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Umsatz" value="{proMonat}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Umsatz"/>
+									<viz.feeds:FeedItem id="feedCategoryAxis" uid="categoryAxis" type="Dimension" values="month1"/>
+								</viz:feeds>
+							</viz:VizFrame>
+						</content>
+					</ScrollContainer>
+					<ScrollContainer id="page2" horizontal="false" vertical="true" height="100%">
+						<Panel id='contentPanel2' class="panelStyle" headerText="Zahlwege" expanded="true" width="auto">
+							<HBox class="settingsHBox">
+								<VBox class='settingsBox' width="20%">
+									<Label text="Anzahl Lastschriften" id="anzahlLastschrift" class="settingsLabel"/>
+									<ObjectNumber class="sapUiSmallMarginBottom" number="42.232"/>
+								</VBox>
+								<VBox class='settingsBox' width="20%">
+									<Label text="Volumen Lastschrifteinzüge" id="labellastschrift" class="settingsLabel"/>
+									<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
+								</VBox>
+								<VBox class='settingsBox' width="20%">
+									<Label text="LSV Quote" id="labelquote" class="settingsLabel"/>
+									<ObjectNumber class="sapUiSmallMarginBottom" number="0,3"/>
+								</VBox>
+							</HBox>
+						</Panel>
+					</ScrollContainer>
+					<ScrollContainer id="page3" horizontal="false" vertical="true" height="100%">
+						<Panel id='contentPanel3' class="panelStyle" headerText="Rückläufer" expanded="true" width="auto">
+							<HBox class="settingsHBox">
+								<VBox class='settingsBox' width="20%">
+									<Label text="Anzahl Rücklastschriften" id="anzahlRuecklast" class="settingsLabel"/>
+									<ObjectNumber class="sapUiSmallMarginBottom" number="19.232"/>
+								</VBox>
+								<VBox class='settingsBox' width="20%">
+									<Label text="Volumen Lastschrifteinzüge" id="volLastschrift" class="settingsLabel"/>
+									<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
+								</VBox>
+								<VBox class='settingsBox' width="20%">
+									<Label text="Volumen Rückläufergebühr" id="ruechlaeufergeb" class="settingsLabel"/>
+									<ObjectNumber class="sapUiSmallMarginBottom" number="10.232,00" unit="EURO"/>
+								</VBox>
+								<VBox class='settingsBox' width="20%">
+									<Label text="Volumen Rückläufer - Quote" id="labelquote2" class="settingsLabel"/>
+									<ObjectNumber class="sapUiSmallMarginBottom" number="0,3"/>
+								</VBox>
+							</HBox>
+						</Panel>
+					</ScrollContainer>
+					<ScrollContainer id="page4" horizontal="false" vertical="true" height="100%">
+						<Panel id='contentPanel4' class="panelStyle" headerText="Klärbestand" expanded="true" width="auto">
+							<HBox class="settingsHBox">
+								<VBox class='settingsBox' width="30%">
+									<Label text="Anzahl Klärbestandsbuchungen" id="anzahlKlaerbestand" class="settingsLabel"/>
+									<ObjectNumber class="sapUiSmallMarginBottom" number="19.232"/>
+								</VBox>
+								<VBox class='settingsBox' width="30%">
+									<Label text="Volumen Klärbestandsbuchungen" id="volKlaerbestand" class="settingsLabel"/>
+									<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
+								</VBox>
+								<VBox class='settingsBox' width="30%">
+									<Label text="Durchschnittliche Verweildauer in Tagen" id="verweildauer" class="settingsLabel"/>
+									<ObjectNumber class="sapUiSmallMarginBottom" number="30,12"/>
+								</VBox>
+							</HBox>
+						</Panel>
+					</ScrollContainer>
+				</pages>
+			</NavContainer>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+</mvc:View>

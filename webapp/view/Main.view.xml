@@ -1,211 +1,44 @@
 <mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
 	xmlns:fm="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
 	xmlns:viz.data="sap.viz.ui5.data" xmlns:tnt="sap.tnt" xmlns:ui.com="sap.suite.ui.commons" controllerName="com.convista.controller.Main">
-	<tnt:ToolPage id="toolPage">
-		<tnt:header>
-			<tnt:ToolHeader>
-				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" tooltip="Auswahl" type="Transparent" press="onSideNavButtonPress">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="NeverOverflow"/>
-					</layoutData>
-				</Button>
-			</tnt:ToolHeader>
-		</tnt:header>
-		<tnt:sideContent>
-			<tnt:SideNavigation expanded="false" itemSelect="onItemSelect" width="30%">
-				<tnt:NavigationList items="{path: '/navigation'}">
-					<tnt:NavigationListItem text="{title}" icon="{icon}" enabled="{enabled}" expanded="{expanded}" items="{items}" key="{key}">
-						<tnt:NavigationListItem text="{title}" key="{key}" enabled="{enabled}"></tnt:NavigationListItem>
-					</tnt:NavigationListItem>
-				</tnt:NavigationList>
-			</tnt:SideNavigation>
-		</tnt:sideContent>
-		<tnt:mainContents>
-			<core:Fragment fragmentName="com.convista.view.Auswahl" type="XML"/>
-			<NavContainer id="pageContainer" width="100%" height="100%" class="navContainerControl sapUiSmallMarginBottom">
-				<Page id="page1" height="100%" class="sapUiFioriObjectPage" showHeader="false" showFooter="false">
-					<content>
-						<l:FixFlex>
-							<l:fixContent>
-								<Panel id='contentPanel1' class="panelStyle" headerText="Zahlungseingang" expanded="true" width="auto">
-									<HBox class="settingsHBox">
-										<VBox class='settingsBox' width="20%">
-											<Label text="Anzahl Zahlungseingänge" id="label01Za" class="settingsLabel"/>
-											<ObjectNumber class="sapUiSmallMarginBottom" number="42.232"/>
-										</VBox>
-										<VBox class='settingsBox' width="20%">
-											<Label text="Volumen Zahlungseingänge" id="label01Zb" class="settingsLabel"/>
-											<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
-										</VBox>
-									</HBox>
-								</Panel>
-							</l:fixContent>
-							<l:flexContent>
-								<ui.com:ChartContainer id="idChartContainer" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" showLegend="true"
-									title="Umsatz">
-									<ui.com:content>
-										<ui.com:ChartContainerContent icon="sap-icon://bar-chart" title="Bar Chart">
-											<ui.com:content>
-												<viz:Popover id="idPopOver"></viz:Popover>
-												<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori', 'showErrorMessage':true }" height="100%" width="100%" vizType="column">
-													<viz:dataset>
-														<viz.data:FlattenedDataset data="{/Umsatz}">
-															<viz.data:dimensions>
-																<viz.data:DimensionDefinition name="month1" value="{month}"/>
-															</viz.data:dimensions>
-															<viz.data:measures>
-																<viz.data:MeasureDefinition name="Umsatz" value="{proMonat}"/>
-															</viz.data:measures>
-														</viz.data:FlattenedDataset>
-													</viz:dataset>
-													<viz:feeds>
-														<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Umsatz"/>
-														<viz.feeds:FeedItem id="feedCategoryAxis" uid="categoryAxis" type="Dimension" values="month1"/>
-													</viz:feeds>
-												</viz:VizFrame>
-											</ui.com:content>
-										</ui.com:ChartContainerContent>
-									</ui.com:content>
-								</ui.com:ChartContainer>
-							</l:flexContent>
-						</l:FixFlex>
-					</content>
-				</Page>
-				<Page id="page2" showHeader="false" horizontal="true" vertical="true" height="100%">
-					<content>
-						<l:FixFlex>
-							<l:fixContent>
-								<Panel id='contentPanel2' class="panelStyle" headerText="LSV-Lastschriften" expanded="true" width="auto">
-									<HBox class="settingsHBox">
-										<VBox class='settingsBox' width="20%">
-											<Label text="Anzahl Lastschriften" id="anzahlLastschrift" class="settingsLabel"/>
-											<ObjectNumber class="sapUiSmallMarginBottom" number="42.232"/>
-										</VBox>
-										<VBox class='settingsBox' width="20%">
-											<Label text="Volumen Lastschrifteinzüge" id="labellastschrift" class="settingsLabel"/>
-											<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
-										</VBox>
-										<VBox class='settingsBox' width="20%">
-											<Label text="LSV Quote" id="labelquote" class="settingsLabel"/>
-											<ObjectNumber class="sapUiSmallMarginBottom" number="0,3"/>
-										</VBox>
-									</HBox>
-								</Panel>
-							</l:fixContent>
-							<l:flexContent>
-								<ui.com:ChartContainer id="idChartContainerBarLine" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
-									showLegend="true" title="Umsatz">
-									<ui.com:content>
-										<ui.com:ChartContainerContent icon="sap-icon://column-chart-dual-axis" title="Combined Chart">
-											<ui.com:content>
-												<viz:Popover id="idPopOverBarLine"></viz:Popover>
-												<viz:VizFrame id="idVizFrameBarLine" uiConfig="{applicationSet:'fiori' }" height="100%" width="100%" vizType="combination">
-													<viz:dataset>
-														<viz.data:FlattenedDataset data="{/Lastschrift}">
-															<viz.data:dimensions>
-																<viz.data:DimensionDefinition name="month1" value="{month}"/>
-															</viz.data:dimensions>
-															<viz.data:measures>
-																<viz.data:MeasureDefinition name="Anzahl Lastschrift" value="{anzahlLastschrift}"/>
-															</viz.data:measures>
-															<viz.data:measures>
-																<viz.data:MeasureDefinition name="Volumen Lastschrift" value="{volumenLastschrift}"/>
-															</viz.data:measures>
-														</viz.data:FlattenedDataset>
-													</viz:dataset>
-													<viz:feeds>
-														<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Anzahl Lastschrift"/>
-														<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Volumen Lastschrift"/>
-														<viz.feeds:FeedItem id="feedCategoryAxisBarLine" uid="categoryAxis" type="Dimension" values="month1"/>
-													</viz:feeds>
-												</viz:VizFrame>
-											</ui.com:content>
-										</ui.com:ChartContainerContent>
-									</ui.com:content>
-								</ui.com:ChartContainer>
-							</l:flexContent>
-						</l:FixFlex>
-					</content>
-				</Page>
-				<Page id="page3" showHeader="false" horizontal="true" vertical="true" height="100% ">
-					<content>
-						<l:FixFlex>
-							<l:fixContent>
-								<Panel id='contentPanel3' class="panelStyle" headerText="Rückläufer" expanded="true" width="auto">
-									<HBox class="settingsHBox">
-										<VBox class='settingsBox' width="20%">
-											<Label text="Anzahl Rücklastschriften" id="anzahlRuecklast" class="settingsLabel"/>
-											<ObjectNumber class="sapUiSmallMarginBottom" number="19.232"/>
-										</VBox>
-										<VBox class='settingsBox' width="20%">
-											<Label text="Volumen Lastschrifteinzüge" id="volLastschrift" class="settingsLabel"/>
-											<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
-										</VBox>
-										<VBox class='settingsBox' width="20%">
-											<Label text="Volumen Rückläufergebühr" id="ruechlaeufergeb" class="settingsLabel"/>
-											<ObjectNumber class="sapUiSmallMarginBottom" number="10.232,00" unit="EURO"/>
-										</VBox>
-										<VBox class='settingsBox' width="20%">
-											<Label text="Volumen Rückläufer - Quote" id="labelquote2" class="settingsLabel"/>
-											<ObjectNumber class="sapUiSmallMarginBottom" number="0,3"/>
-										</VBox>
-									</HBox>
-								</Panel>
-							</l:fixContent>
-							<l:flexContent>
-								<ui.com:ChartContainer id="idChartContainerBarLineRueck" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
-									showLegend="true" title="Umsatz">
-									<ui.com:content>
-										<ui.com:ChartContainerContent icon="sap-icon://column-chart-dual-axis" title="Combined Chart">
-											<ui.com:content>
-												<viz:Popover id="idPopOverBarLineRueck"></viz:Popover>
-												<viz:VizFrame id="idVizFrameBarLineRueck" uiConfig="{applicationSet:'fiori' }" height="100%" width="100%" vizType="combination">
-													<viz:dataset>
-														<viz.data:FlattenedDataset data="{/Rückläufer}">
-															<viz.data:dimensions>
-																<viz.data:DimensionDefinition name="month1" value="{month}"/>
-															</viz.data:dimensions>
-															<viz.data:measures>
-																<viz.data:MeasureDefinition name="Anzahl Rücklastschrift" value="{anzahlRücklastschrift}"/>
-															</viz.data:measures>
-															<viz.data:measures>
-																<viz.data:MeasureDefinition name="Volumen Rücklastschrift" value="{volumenRücklastschrift}"/>
-															</viz.data:measures>
-														</viz.data:FlattenedDataset>
-													</viz:dataset>
-													<viz:feeds>
-														<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Anzahl Rücklastschrift"/>
-														<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Volumen Rücklastschrift"/>
-														<viz.feeds:FeedItem id="feedCategoryAxisBarLineRueck" uid="categoryAxis" type="Dimension" values="month1"/>
-													</viz:feeds>
-												</viz:VizFrame>
-											</ui.com:content>
-										</ui.com:ChartContainerContent>
-									</ui.com:content>
-								</ui.com:ChartContainer>
-							</l:flexContent>
-						</l:FixFlex>
-					</content>
-				</Page>
-				<Page id="page4" showHeader="false" horizontal="true" vertical="true" height="100%">
-					<Panel id='contentPanel4' class="panelStyle" headerText="Klärbestand" expanded="true" width="auto">
-						<HBox class="settingsHBox">
-							<VBox class='settingsBox' width="30%">
-								<Label text="Anzahl Klärbestandsbuchungen" id="anzahlKlaerbestand" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="19.232"/>
-							</VBox>
-							<VBox class='settingsBox' width="30%">
-								<Label text="Volumen Klärbestandsbuchungen" id="volKlaerbestand" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
-							</VBox>
-							<VBox class='settingsBox' width="30%">
-								<Label text="Durchschnittliche Verweildauer in Tagen" id="verweildauer" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="30,12"/>
-							</VBox>
-						</HBox>
-					</Panel>
-				</Page>
-			</NavContainer>
-		</tnt:mainContents>
-	</tnt:ToolPage>
+	<App>
+		<Page title="{i18n>titleTile}"  >
+			<tnt:ToolPage id="toolPage">
+				<tnt:header visible="false">
+					<tnt:ToolHeader id="toolHeader1" visible="false" >
+						<Button id="sideNavigationToggleButton" icon="sap-icon://menu2"  visible="false" tooltip="Auswahl" type="Transparent"
+							press="onSideNavButtonPress" expanded="false">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</Button>
+					</tnt:ToolHeader>
+				</tnt:header>
+				<tnt:sideContent>
+					<tnt:SideNavigation expanded="false" itemSelect="onItemSelect" width="30%">
+						<tnt:NavigationList items="{path: '/navigation'}" expanded="false">
+							<tnt:NavigationListItem text="{title}" icon="{icon}" enabled="{enabled}" expanded="{expanded}" items="{items}" key="{key}">
+								<tnt:NavigationListItem text="{title}" key="{key}" enabled="{enabled}"></tnt:NavigationListItem>
+							</tnt:NavigationListItem>
+						</tnt:NavigationList>
+					</tnt:SideNavigation>
+				</tnt:sideContent>
+				<tnt:mainContents>
+					<core:Fragment fragmentName="com.convista.view.Auswahl" type="XML"/>
+					<NavContainer id="pageContainer" width="100%" height="100%" class="navContainerControl sapUiSmallMarginBottom">
+						<core:Fragment fragmentName="com.convista.view.Zahlungseingang" type="XML"/>
+						<core:Fragment fragmentName="com.convista.view.Lastschriften" type="XML"/>
+					    <core:Fragment fragmentName="com.convista.view.Ruecklaeufer" type="XML"/>
+					    <core:Fragment fragmentName="com.convista.view.Klaerbestand" type="XML"/>
+					</NavContainer>
+				</tnt:mainContents>
+			</tnt:ToolPage>
+			<footer>
+				<Toolbar>
+					<ToolbarSpacer/>
+					<Button text="Export" press="onExportToPDF" />
+				</Toolbar>
+			</footer>
+		</Page>
+	</App>
 </mvc:View>

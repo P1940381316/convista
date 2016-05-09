@@ -1,6 +1,12 @@
 <core:FragmentDefinition xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
 	xmlns:fm="sap.ui.layout.form" xmlns:core="sap.ui.core">
-	<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="true" headerText="{i18n>setting}" width="auto">
+	<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="false" headerText="{i18n>setting}" width="auto">
+		<headerToolbar>
+			<Toolbar height="3rem">
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://refresh" tooltip="{i18n>refresh}" press="onRefresh"/>
+			</Toolbar>
+		</headerToolbar>
 		<content>
 			<HBox class='settingsHBox'>
 				<VBox class='settingsBox' width="25%">
@@ -14,7 +20,7 @@
 						</items>
 					</Select>
 				</VBox>
-				<VBox class='settingsBox' width="20%">
+				<VBox class='settingsBox' width="18%">
 					<Label text="Buchungskreis" id="label02" required="false" design="Bold" class='settingsLabel' labelFor="buchungskreis"/>
 					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item101" selectedItemId="item101" id="buchungskreis">
 						<items>
@@ -36,7 +42,7 @@
 						</items>
 					</Select>
 				</VBox>
-				<VBox class='settingsBox' width="16%">
+				<VBox class='settingsBox' width="14%">
 					<Label text="von Jahr" id="label07" design="Bold" class="settingsLabel"/>
 					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item100" selectedItemId="item100" id="selectVonJahr">
 						<items>
@@ -57,7 +63,7 @@
 							<sap.ui.core:ListItem text="03" key="item3" id="item1121"/></items>
 					</Select>
 				</VBox>
-				<VBox class='settingsBox' width="16%">
+				<VBox class='settingsBox' width="14%">
 					<Label text="bis Jahr" id="label017" design="Bold" class="settingsLabel"/>
 					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="__item1100" selectedItemId="__item1100" id="__select11">
 						<items>

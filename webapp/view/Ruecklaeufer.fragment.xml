@@ -1,0 +1,64 @@
+<core:FragmentDefinition xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:ui.com="sap.suite.ui.commons" xmlns:fm="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+	<Page id="page3" showHeader="false" horizontal="true" vertical="true" height="100% ">
+		<content>
+			<l:FixFlex>
+				<l:fixContent>
+					<Panel id='contentPanel3' class="panelStyle" headerText="Rücklaäufer" expanded="true" width="auto">
+						<HBox class="settingsHBox">
+							<VBox class='settingsBox' width="20%">
+								<Label text="Anzahl Rücklastschriften" id="anzahlRuecklast" class="settingsLabel"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="19.232"/>
+							</VBox>
+							<VBox class='settingsBox' width="20%">
+								<Label text="Volumen Lastschrifteinzüge" id="volLastschrift" class="settingsLabel"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
+							</VBox>
+							<VBox class='settingsBox' width="20%">
+								<Label text="Volumen Rückläufergebühr" id="ruechlaeufergeb" class="settingsLabel"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="10.232,00" unit="EURO"/>
+							</VBox>
+							<VBox class='settingsBox' width="20%">
+								<Label text="Volumen Rückläufer - Quote" id="labelquote2" class="settingsLabel"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="0,3"/>
+							</VBox>
+						</HBox>
+					</Panel>
+				</l:fixContent>
+				<l:flexContent>
+					<ui.com:ChartContainer id="idChartContainerBarLineRueck" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
+						showLegend="true" height="110%" title="Umsatz">
+						<ui.com:content>
+							<ui.com:ChartContainerContent icon="sap-icon://column-chart-dual-axis" title="Combined Chart">
+								<ui.com:content>
+									<viz:Popover id="idPopOverBarLineRueck"></viz:Popover>
+									<viz:VizFrame id="idVizFrameBarLineRueck" uiConfig="{applicationSet:'fiori' }" height="100%" width="100%" vizType="combination">
+										<viz:dataset>
+											<viz.data:FlattenedDataset data="{/Rückläufer}">
+												<viz.data:dimensions>
+													<viz.data:DimensionDefinition name="month1" value="{month}"/>
+												</viz.data:dimensions>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="Anzahl Rücklastschrift" value="{anzahlRücklastschrift}"/>
+												</viz.data:measures>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="Volumen Rücklastschrift" value="{volumenRücklastschrift}"/>
+												</viz.data:measures>
+											</viz.data:FlattenedDataset>
+										</viz:dataset>
+										<viz:feeds>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Anzahl Rücklastschrift"/>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Volumen Rücklastschrift"/>
+											<viz.feeds:FeedItem id="feedCategoryAxisBarLineRueck" uid="categoryAxis" type="Dimension" values="month1"/>
+										</viz:feeds>
+									</viz:VizFrame>
+								</ui.com:content>
+							</ui.com:ChartContainerContent>
+						</ui.com:content>
+					</ui.com:ChartContainer>
+				</l:flexContent>
+			</l:FixFlex>
+		</content>
+	</Page>
+</core:FragmentDefinition>

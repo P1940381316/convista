@@ -1,0 +1,60 @@
+<core:FragmentDefinition xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:ui.com="sap.suite.ui.commons" xmlns:fm="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+	<Page id="page4" showHeader="false" horizontal="true" vertical="true" height="100% ">
+		<content>
+			<l:FixFlex>
+				<l:fixContent>
+					<Panel id='contentPanel4' class="panelStyle" headerText="Klärbestand" expanded="true" width="auto">
+						<HBox class="settingsHBox">
+							<VBox class='settingsBox' width="30%">
+								<Label text="Anzahl Klärbestandsbuchungen" id="anzahlKlaerbestand" class="settingsLabel"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="19.232"/>
+							</VBox>
+							<VBox class='settingsBox' width="30%">
+								<Label text="Volumen Klärbestandsbuchungen" id="volKlaerbestand" class="settingsLabel"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
+							</VBox>
+							<VBox class='settingsBox' width="30%">
+								<Label text="Durchschnittliche Verweildauer in Tagen" id="verweildauer" class="settingsLabel"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="30,12"/>
+							</VBox>
+						</HBox>
+					</Panel>
+				</l:fixContent>
+				<l:flexContent>
+					<ui.com:ChartContainer id="idChartContainerBarLineKlaer" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
+						showLegend="true" height="110%" title="Klärbestand">
+						<ui.com:content>
+							<ui.com:ChartContainerContent icon="sap-icon://column-chart-dual-axis" title="Combined Chart">
+								<ui.com:content>
+									<viz:Popover id="idPopOverBarLineKlaer"></viz:Popover>
+									<viz:VizFrame id="idVizFrameBarLineKlaer" uiConfig="{applicationSet:'fiori' }" height="100%" width="100%" vizType="combination">
+										<viz:dataset>
+											<viz.data:FlattenedDataset data="{/Klärbestand}">
+												<viz.data:dimensions>
+													<viz.data:DimensionDefinition name="month1" value="{month}"/>
+												</viz.data:dimensions>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="Anzahl Klärbestand" value="{anzahlKlaerbestand}"/>
+												</viz.data:measures>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="Volumen Klärbestand" value="{volumenKlaerbestand}"/>
+												</viz.data:measures>
+											</viz.data:FlattenedDataset>
+										</viz:dataset>
+										<viz:feeds>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Anzahl Klärbestand"/>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Volumen Klärbestand"/>
+											<viz.feeds:FeedItem id="feedCategoryAxisBarLineKlaer" uid="categoryAxis" type="Dimension" values="month1"/>
+										</viz:feeds>
+									</viz:VizFrame>
+								</ui.com:content>
+							</ui.com:ChartContainerContent>
+						</ui.com:content>
+					</ui.com:ChartContainer>
+				</l:flexContent>
+			</l:FixFlex>
+		</content>
+	</Page>
+</core:FragmentDefinition>

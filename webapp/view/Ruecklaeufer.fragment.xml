@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
 	xmlns:ui.com="sap.suite.ui.commons" xmlns:fm="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
 	xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
-	<Page id="page3" showHeader="false" horizontal="true" vertical="true" height="100% ">
+	<Page id="page3"  height="100%" class="sapUiFioriObjectPage" showHeader="false" showFooter="false">
 		<content>
 			<l:FixFlex>
 				<l:fixContent>
@@ -29,6 +29,12 @@
 				<l:flexContent>
 					<ui.com:ChartContainer id="idChartContainerBarLineRueck" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
 						showLegend="true" height="110%" title="Umsatz">
+						<ui.com:dimensionSelectors>
+							<Select id="idoSelectRueck" change="handleSelectionChangeLastschrift">
+								<core:Item key="0" text="Vorjahr"/>
+								<core:Item key="1" text="Vorperiode"/>
+							</Select>
+						</ui.com:dimensionSelectors>
 						<ui.com:content>
 							<ui.com:ChartContainerContent icon="sap-icon://column-chart-dual-axis" title="Combined Chart">
 								<ui.com:content>

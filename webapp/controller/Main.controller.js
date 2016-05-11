@@ -75,7 +75,7 @@ sap.ui.define([
 					text: "Umsatz"
 				}
 			});
-			var dataModel = new JSONModel("model/BarJsonExample.json");
+			var dataModel = new JSONModel("model/LineEingangs.json");
 			dataModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
 			oVizFrame.setModel(dataModel);
 
@@ -214,13 +214,14 @@ sap.ui.define([
 			var sideExpanded = toolPage.getSideExpanded();
 
 			this._setToggleButtonTooltip(sideExpanded);
-
+    
 		//	toolPage.setSideExpanded(!toolPage.getSideExpanded());
+		// setze auf immer geschlossen
 			toolPage.setSideExpanded(false);
 		},
 		
 		onExportToPDF : function() {
-		  		MessageToast.show("ExportNachPDF. Noch nicht implementiert!");  
+		  		MessageToast.show("Export Nach PDF. Noch nicht implementiert!");  
 		},
 
 		initCustomFormat: function() {

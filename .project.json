@@ -2,7 +2,7 @@
   "hcpdeploy": {
     "account": "p1940381316trial",
     "name": "cckpi01",
-    "lastVersionWeTriedToDeploy": "1.0.5"
+    "lastVersionWeTriedToDeploy": "1.0.7"
   },
   "mockpreview": {
     "mockUri": "",

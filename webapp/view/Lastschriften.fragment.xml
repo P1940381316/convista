@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
 	xmlns:ui.com="sap.suite.ui.commons" xmlns:fm="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
 	xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
-	<Page id="page2" showHeader="false" horizontal="true" vertical="true" height="100%">
+	<Page id="page2"  height="100%" class="sapUiFioriObjectPage" showHeader="false" showFooter="false">
 		<content>
 			<l:FixFlex>
 				<l:fixContent>
@@ -23,7 +23,7 @@
 					</Panel>
 				</l:fixContent>
 				<l:flexContent>
-					<ui.com:ChartContainer id="idChartContainerBarLine" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
+					<ui.com:ChartContainer id="idChartContainerBarLine" showFullScreen="false" showPersonalization="false" autoAdjustHeight="true"
 						showLegend="true" title="Lastschrift">
 						<ui.com:dimensionSelectors>
 							<Select id="idoSelect1" change="handleSelectionChangeLastschrift">
@@ -46,7 +46,7 @@
 													<viz.data:MeasureDefinition name="Anzahl Lastschrift" value="{anzahlLastschrift}"/>
 												</viz.data:measures>
 												<viz.data:measures>
-													<viz.data:MeasureDefinition name="Volumen Lastschrift" value="{volumenLastschrift}"/>
+													<viz.data:MeasureDefinition name="Volumen Lastschrift" type="Dimension" value="{volumenLastschrift}"/>
 												</viz.data:measures>
 											</viz.data:FlattenedDataset>
 										</viz:dataset>

@@ -8,19 +8,29 @@
 					<Panel id='contentPanel1' class="panelStyle" headerText="Zahlungseingang" expanded="true" width="auto">
 						<HBox class="settingsHBox">
 							<VBox class='settingsBox' width="20%">
-								<Label text="Anzahl Zahlungseingänge" id="label01Za" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="42.232"/>
+								<ObjectIdentifier title="Anzahl Zahlungseingänge" titleActive="false"/>
+								<!-- <Label text="" id="label01Za" design="Bold" class="settingsLabel"/> -->
+								<ObjectNumber class="sapUiSmallMarginBottom" number="42.232" state="Success" />
 							</VBox>
 							<VBox class='settingsBox' width="20%">
-								<Label text="Volumen Zahlungseingänge" id="label01Zb" class="settingsLabel"/>
-								<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO"/>
+								<ObjectIdentifier title="Volumen Zahlungseingänge" titleActive="false"/>
+								<!--	<Label text="Volumen Zahlungseingänge" id="label01Zb" design="Bold" class="settingsLabel"/> -->
+								<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO" state="Success" />
 							</VBox>
 						</HBox>
 					</Panel>
 				</l:fixContent>
 				<l:flexContent>
-					<ui.com:ChartContainer id="idChartContainer" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" showLegend="true"
-						title="Umsatz" height="110%">
+					<ui.com:ChartContainer id="idChartContainer1" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" showLegend="true"
+						title="Umsatz" height="100%">
+						<ui.com:dimensionSelectors>
+							<Select id="idoSelectEing" change="handleSelectionChangeLastschrift">
+								<core:Item key="0" text="Lastschrift"/>
+								<core:Item key="1" text="Kreditkarte"/>
+								<core:Item key="2" text="Verrechnungscheck"/>
+								<core:Item key="3" text="PayPal"/>
+							</Select>
+						</ui.com:dimensionSelectors>
 						<ui.com:content>
 							<ui.com:ChartContainerContent icon="sap-icon://bar-chart" title="Bar Chart">
 								<ui.com:content>
@@ -29,16 +39,28 @@
 										<viz:dataset>
 											<viz.data:FlattenedDataset data="{/Umsatz}">
 												<viz.data:dimensions>
-													<viz.data:DimensionDefinition name="month1" value="{month}"/>
+													<viz.data:DimensionDefinition name="gruppe" value="{gruppe}"/>
 												</viz.data:dimensions>
 												<viz.data:measures>
-													<viz.data:MeasureDefinition name="Umsatz" value="{lastschrift}"/>
+													<viz.data:MeasureDefinition name="Lastschrift" value="{Lastschrift}"/>
+												</viz.data:measures>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="Kreditkarte" value="{Kreditkarte}"/>
+												</viz.data:measures>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="Verrechnungsscheck" value="{Verrechnungsscheck}"/>
+												</viz.data:measures>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="PayPal" value="{PayPal}"/>
 												</viz.data:measures>
 											</viz.data:FlattenedDataset>
 										</viz:dataset>
 										<viz:feeds>
-											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Umsatz"/>
-											<viz.feeds:FeedItem id="feedCategoryAxis" uid="categoryAxis" type="Dimension" values="month1"/>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Lastschrift"/>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Kreditkarte"/>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Verrechnungsscheck"/>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="PayPal"/>
+											<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="gruppe" id="feedCategoryAxis"/>
 										</viz:feeds>
 									</viz:VizFrame>
 								</ui.com:content>

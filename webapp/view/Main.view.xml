@@ -26,7 +26,8 @@
 				<tnt:mainContents>
 					<core:Fragment fragmentName="com.convista.view.Auswahl" type="XML"/>
 					<NavContainer id="pageContainer" width="100%" height="100%" class="navContainerControl sapUiSmallMarginBottom">
-						<core:Fragment fragmentName="com.convista.view.Zahlungseingang" type="XML"/>
+						<!-- <core:Fragment fragmentName="com.convista.view.Zahlungseingang" type="XML"/> -->
+						 <core:Fragment fragmentName="com.convista.view.Zahlungseingang_flex" type="XML"/>
 						<core:Fragment fragmentName="com.convista.view.Lastschriften" type="XML"/>
 					    <core:Fragment fragmentName="com.convista.view.Ruecklaeufer" type="XML"/>
 					    <core:Fragment fragmentName="com.convista.view.Klaerbestand" type="XML"/>

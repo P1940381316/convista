@@ -4,7 +4,8 @@
 		<headerToolbar>
 			<Toolbar height="3rem">
 				<ToolbarSpacer/>
-				<Button icon="sap-icon://refresh" tooltip="{i18n>refresh}" press="onRefresh"/>
+			<!--	<Button icon="sap-icon://refresh" tooltip="{i18n>refresh}" press="onRefresh"/> -->
+				<PullToRefresh id="pullToRefresh" refresh="onRefresh"/>
 			</Toolbar>
 		</headerToolbar>
 		<content>

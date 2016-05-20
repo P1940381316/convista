@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:ui.com="sap.suite.ui.commons" xmlns:fm="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+	<Page id="page2" height="100%" class="sapUiFioriObjectPage" showHeader="false" showFooter="false">
+		<content>
+			<l:FixFlex>
+				<l:fixContent>
+					<Panel id="panelDebitEntry" class="panelStyle" headerText="LSV-Lastschriften" expanded="true" width="auto">
+						<HBox class="settingsHBox">
+							<VBox class='vboxKPI' width="20%">
+								<ObjectIdentifier title="Anzahl Lastschriften" id="anzahlLastschrift" />
+								    
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'debitEntryCount' , formatter: '.number1formater' }"/>
+							</VBox>
+							<VBox width="10px">
+							</VBox>
+							<VBox class='vboxKPI' width="20%">
+								<ObjectIdentifier title="Volumen Lastschrifteinzüge" id="labellastschrift" />
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{path: 'debitEntryVolume', formatter: '.number1formater' }" unit="EURO"/> 
+							</VBox>
+								<VBox width="10px">
+							</VBox>
+							<VBox class='vboxKPI' width="20%">
+								<ObjectIdentifier title="LSV Quote" id="labelquote" />
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'lsvQuote'}"/>
+							</VBox>
+						</HBox>
+					</Panel>
+				</l:fixContent>
+				<l:flexContent>
+					<ui.com:ChartContainer id="idCombinedChartContainerLast" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" showLegend="true"
+						contentChange="attachContentChange">
+						<ui.com:dimensionSelectors>
+							<Select id="idoSelect1" change="handleSelectionChangeLSVLast">
+								<core:Item key="0" text="Aktuell"/>
+								<core:Item key="1" text="Vorjahr"/>
+								<core:Item key="2" text="Vorperiode"/>
+							</Select>
+						</ui.com:dimensionSelectors>
+					</ui.com:ChartContainer>
+				</l:flexContent>
+			</l:FixFlex>
+		</content>
+	</Page>
+</core:FragmentDefinition>

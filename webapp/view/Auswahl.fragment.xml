@@ -4,13 +4,13 @@
 		<headerToolbar>
 			<Toolbar height="3rem">
 				<ToolbarSpacer/>
-			<!--	<Button icon="sap-icon://refresh" tooltip="{i18n>refresh}" press="onRefresh"/> -->
+				<!--	<Button icon="sap-icon://refresh" tooltip="{i18n>refresh}" press="onRefresh"/> -->
 				<PullToRefresh id="pullToRefresh" refresh="onRefresh"/>
 			</Toolbar>
 		</headerToolbar>
 		<content>
-			<HBox class='settingsHBox'>
-				<VBox class='settingsBox' width="25%">
+			<HBox class='settingsHBox' id="selectBox1">
+				<VBox class='settingsBox' width="24%">
 					<Label text="Gesellschaft" id="label01" required="false" design="Bold" class='settingsLabel' labelFor="input01"/>
 					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item10" selectedItemId="item10" id="gesellschaft" width="90%">
 						<items>
@@ -21,7 +21,7 @@
 						</items>
 					</Select>
 				</VBox>
-				<VBox class='settingsBox' width="18%">
+				<VBox class='settingsBox' width="20%">
 					<Label text="Buchungskreis" id="label02" required="false" design="Bold" class='settingsLabel' labelFor="buchungskreis"/>
 					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item101" selectedItemId="item101" id="buchungskreis">
 						<items>
@@ -33,46 +33,36 @@
 					</Select>
 				</VBox>
 				<VBox class='settingsBox'>
-					<Label text="von Monat" id="label04" design="Bold" class="settingsLabel"/>
-					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item0011" selectedItemId="item0011" id="selectVonMonth">
+					<Label text="von: Monat" id="label04" design="Bold" class="settingsLabel"/>
+					<Select xmlns:sap.ui.core="sap.ui.core" items="{path: '/monthSelect'}" id="vonMonth">
 						<items>
-							<sap.ui.core:ListItem text="01" key="item1" id="item0011"/>
-							<sap.ui.core:ListItem text="02" key="item2" id="item0111"/>
-							<sap.ui.core:ListItem text="03" key="item3" id="item0211"/>
-							<sap.ui.core:ListItem text="04" key="item4" id="item0411"/>
+							<sap.ui.core:ListItem text="{month}" key="{key}"/>
 						</items>
 					</Select>
 				</VBox>
-				<VBox class='settingsBox' width="14%">
-					<Label text="von Jahr" id="label07" design="Bold" class="settingsLabel"/>
-					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item100" selectedItemId="item100" id="selectVonJahr">
+				<VBox width="3px"/>
+				<VBox class='settingsBox' width="15%">
+					<Label text="Jahr" id="label07" design="Bold" class="settingsLabel"/>
+					<Select xmlns:sap.ui.core="sap.ui.core" items="{path: '/yearSelect'}" id="vonYear">
 						<items>
-							<sap.ui.core:ListItem text="2012" key="item1" id="item100"/>
-							<sap.ui.core:ListItem text="2013" key="item2" id="item110"/>
-							<sap.ui.core:ListItem text="2014" key="item3" id="item130"/>
-							<sap.ui.core:ListItem text="2015" key="item4" id="item140"/>
-							<sap.ui.core:ListItem text="2016" key="item5" id="item150"/>
+							<sap.ui.core:ListItem text="{year}" key="{key}"/>
 						</items>
 					</Select>
 				</VBox>
 				<VBox class='settingsBox'>
-					<Label text="bis Monat" id="label09" design="Bold" class="settingsLabel"/>
-					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="item1101" selectedItemId="item1101" id="bisMonat">
+					<Label text="bis: Monat" id="label09" design="Bold" class="settingsLabel"/>
+					<Select xmlns:sap.ui.core="sap.ui.core" items="{path: '/monthSelect'}" id="bisMonth">
 						<items>
-							<sap.ui.core:ListItem text="01" key="item1" id="item1101"/>
-							<sap.ui.core:ListItem text="02" key="item2" id="item1111"/>
-							<sap.ui.core:ListItem text="03" key="item3" id="item1121"/></items>
+							<sap.ui.core:ListItem text="{month}" key="{key}"/>
+						</items>
 					</Select>
 				</VBox>
-				<VBox class='settingsBox' width="14%">
-					<Label text="bis Jahr" id="label017" design="Bold" class="settingsLabel"/>
-					<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="item1" selectedItem="__item1100" selectedItemId="__item1100" id="__select11">
+				<VBox width="3px"/>
+				<VBox class='settingsBox' width="15%">
+					<Label text="Jahr" id="label017" design="Bold" class="settingsLabel"/>
+					<Select xmlns:sap.ui.core="sap.ui.core" items="{path: '/yearSelect'}" id="bisYear">
 						<items>
-							<sap.ui.core:ListItem text="2012" key="item1" id="__item1100"/>
-							<sap.ui.core:ListItem text="2013" key="item2" id="__item1110"/>
-							<sap.ui.core:ListItem text="2014" key="item3" id="__item1130"/>
-							<sap.ui.core:ListItem text="2015" key="item4" id="__item1140"/>
-							<sap.ui.core:ListItem text="2016" key="item5" id="__item1150"/>
+							<sap.ui.core:ListItem text="{year}" key="{key}"/>
 						</items>
 					</Select>
 				</VBox>

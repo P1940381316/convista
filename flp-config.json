@@ -2,7 +2,7 @@
     "application": {
         "id": "",
         "title": "CCKPI01",
-        "description": "KPI",
+        "description": "Ausgleichsverwaltung",
         "type": "SAP_UI5_Component",
         "componentUrl": "/dist",
         "appUrl": "#CCKPI01-Display",
@@ -26,7 +26,7 @@
         "title": "Ausgleichsverwaltung",
         "subtitle": "4 Kennzahlen",
         "searchKeywords": "Ausgleichsverwaltung,4 Kennzahlen",
-        "displayIconUrl": "sap-icon://approvals",
+        "displayIconUrl": "sap-icon://money-bills",
         "displayInfoText": "",
         "size": "1x1",
         "serviceURL": "",

@@ -1,4 +1,8 @@
 {
+    "Aktuell": {
+	"debitEntryCount": "42333",
+	"debitEntryVolume": "21232232",
+	"lsvQuote" : "0,4",
 	"Lastschrift": [{
 		"month": "Jan",
 		"volumenLastschrift": "158626",
@@ -48,4 +52,112 @@
 		"volumenLastschrift": "182408",
 		"anzahlLastschrift": "18235"
 	}]
+},
+    "Vorjahr" : {
+	"debitEntryCount": "46333",
+	"debitEntryVolume": "23232132",
+	"lsvQuote" : "0,5",
+	"Lastschrift": [{
+		"month": "Jan",
+		"volumenLastschrift": "258626",
+		"anzahlLastschrift": "17235"
+	}, {
+		"month": "Feb",
+		"volumenLastschrift": "331160",
+		"anzahlLastschrift": "15235"
+	}, {
+		"month": "Mrz",
+		"volumenLastschrift": "215105",
+		"anzahlLastschrift": "16235"
+	}, {
+		"month": "Apr",
+		"volumenLastschrift": "539378",
+		"anzahlLastschrift": "17835"
+	}, {
+		"month": "Mai",
+		"volumenLastschrift": "127401",
+		"anzahlLastschrift": "19235"
+	}, {
+		"month": "Juni",
+		"volumenLastschrift": "377401",
+		"anzahlLastschrift": "17935"
+	}, {
+		"month": "Juli",
+		"volumenLastschrift": "297401",
+		"anzahlLastschrift": "17280"
+	}, {
+		"month": "Aug",
+		"volumenLastschrift": "147401",
+		"anzahlLastschrift": "13235"
+	}, {
+		"month": "Sep",
+		"volumenLastschrift": "167401",
+		"anzahlLastschrift": "13235"
+	}, {
+		"month": "Okt",
+		"volumenLastschrift": "127401",
+		"anzahlLastschrift": "15935"
+	}, {
+		"month": "Nov",
+		"volumenLastschrift": "112408",
+		"anzahlLastschrift": "14235"
+	}, {
+		"month": "Dez",
+		"volumenLastschrift": "132408",
+		"anzahlLastschrift": "15235"
+	}]
+}, "Vorperiode" :{
+    "debitEntryCount": "36333",
+	"debitEntryVolume": "13435192",
+	"lsvQuote" : "0,3",
+ 	"Lastschrift": [{
+		"month": "Jan",
+		"volumenLastschrift": "158626",
+		"anzahlLastschrift": "17235"
+	}, {
+		"month": "Feb",
+		"volumenLastschrift": "131160",
+		"anzahlLastschrift": "13235"
+	}, {
+		"month": "Mrz",
+		"volumenLastschrift": "135105",
+		"anzahlLastschrift": "13235"
+	}, {
+		"month": "Apr",
+		"volumenLastschrift": "139378",
+		"anzahlLastschrift": "15835"
+	}, {
+		"month": "Mai",
+		"volumenLastschrift": "217401",
+		"anzahlLastschrift": "11235"
+	}, {
+		"month": "Juni",
+		"volumenLastschrift": "157401",
+		"anzahlLastschrift": "12935"
+	}, {
+		"month": "Juli",
+		"volumenLastschrift": "127401",
+		"anzahlLastschrift": "13280"
+	}, {
+		"month": "Aug",
+		"volumenLastschrift": "127401",
+		"anzahlLastschrift": "17235"
+	}, {
+		"month": "Sep",
+		"volumenLastschrift": "137401",
+		"anzahlLastschrift": "13235"
+	}, {
+		"month": "Okt",
+		"volumenLastschrift": "157401",
+		"anzahlLastschrift": "19935"
+	}, {
+		"month": "Nov",
+		"volumenLastschrift": "132408",
+		"anzahlLastschrift": "16235"
+	}, {
+		"month": "Dez",
+		"volumenLastschrift": "122408",
+		"anzahlLastschrift": "12235"
+	}]
+    }
 }

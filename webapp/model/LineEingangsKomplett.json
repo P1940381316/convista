@@ -1,9 +1,12 @@
-{
-	"Umsatz": [{
+{   "Umsatz": {
+	    "incomingCount" : 42232,
+	    "valueIncoming" : 21232232, 
+	    "paymentprocedure" : [{
 	    "gruppe": "Zahlungsverfahren",
-		"Lastschrift" : "1586262",
-		"Kreditkarte" : "2311609",
-		"Verrechnungsscheck": "1151051",
-	    "PayPal" : "1393786"
-	}]
+		"Lastschrift" : 1586262,
+		"Kreditkarte" : 2311609,
+		"Verrechnungsscheck": 1151051,
+	    "PayPal" : 1393786
+	    }]
+	}
 }

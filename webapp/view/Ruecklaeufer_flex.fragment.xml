@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:ui.com="sap.suite.ui.commons" xmlns:fm="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+	<Page id="page3" height="100%" class="sapUiFioriObjectPage" showHeader="false" showFooter="false">
+		<content>
+			<l:FixFlex>
+				<l:fixContent>
+					<Panel id="panelRefusal" class="panelStyle" headerText="Rückläufer" expanded="true" width="auto">
+						<HBox class="settingsHBox">
+							<VBox class='vboxKPI' width="15%">
+								<ObjectIdentifier title="Anzahl Rücklastschriften" id="anzahlRuecklast" class="settingsLabel"/>
+							   	<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'refusalCount' , formatter: '.number1formater' }"/>
+							</VBox>
+							<VBox width="10px"></VBox>
+							<VBox class='vboxKPI' width="15%">
+								<ObjectIdentifier title="Volumen Lastschrifteinzüge" id="volLastschrift" class="settingsLabel"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'refusalVolume' , formatter: '.number1formater' }" unit="EURO"/>
+							</VBox>
+							<VBox width="10px"></VBox>
+							<VBox class='vboxKPI' width="15%">
+								<ObjectIdentifier title="Volumen Rückläufergebühr" id="ruechlaeufergeb" class="settingsLabel"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'refusalVolumsCharge' , formatter: '.number1formater' }" unit="EURO"/>
+							</VBox>
+							<VBox width="10px"></VBox>
+							<VBox class='vboxKPI' width="15%">
+								<ObjectIdentifier title="Volumen Rückläufer - Quote" id="labelquote2" class="settingsLabel"/>
+									<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'refusalVolumsQuote' , formatter: '.number1formater' }" unit="EURO"/>
+							</VBox>
+						</HBox>
+					</Panel>
+				</l:fixContent>
+				<l:flexContent>
+					<ui.com:ChartContainer id="idChartContainerRueck" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" showLegend="true"
+						contentChange="attachContentChange">
+						<ui.com:dimensionSelectors>
+							<Select id="idoSelectRefusal" change="handleSelectionChangeRueck">
+								<core:Item key="0" text="Aktuell"/>
+								<core:Item key="1" text="Vorjahr"/>
+								<core:Item key="2" text="Vorperiode"/>
+							</Select>
+						</ui.com:dimensionSelectors>
+					</ui.com:ChartContainer>
+				</l:flexContent>
+			</l:FixFlex>
+		</content>
+	</Page>
+</core:FragmentDefinition>

@@ -5,31 +5,29 @@
 		<content>
 			<l:FixFlex>
 				<l:fixContent>
-					<Panel id='contentPanel1' class="panelStyle" headerText="Zahlungseingang" expanded="true" width="auto">
-						<HBox class="settingsHBox">
-							<VBox class='settingsBox' width="20%">
+					<Panel id="panelKompl" class="panelStyle" backgroundDesign="sap.m.BackgroundDesign.Solid" intro="Intro" headerText="Zahlungseingang"
+						expanded="true" width="auto">
+						<HBox class="settingsHBox ">
+							<VBox class="vboxKPI" width="20%">
 								<ObjectIdentifier title="Anzahl Zahlungseingänge" titleActive="false"/>
-								<!-- <Label text="" id="label01Za" design="Bold" class="settingsLabel"/> -->
-								<ObjectNumber class="sapUiSmallMarginBottom" number="42.232" state="Success"/>
+								<ObjectNumber number="{path: '/Umsatz/incomingCount' , formatter: '.number1formater' }"/>
 							</VBox>
-							<VBox class='settingsBox' width="20%">
+							<VBox width="10px">
+							</VBox>
+							<VBox class="vboxKPI" width="20%">
 								<ObjectIdentifier title="Volumen Zahlungseingänge" titleActive="false"/>
-								<!--	<Label text="Volumen Zahlungseingänge" id="label01Zb" design="Bold" class="settingsLabel"/> -->
-								<ObjectNumber class="sapUiSmallMarginBottom" number="21.232.232,00" unit="EURO" state="Success"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{path:'/Umsatz/valueIncoming' , formatter: '.number1formater' }" unit="EURO"
+									state="Success"/>
 							</VBox>
 						</HBox>
 					</Panel>
 				</l:fixContent>
 				<l:flexContent>
 					<ui.com:ChartContainer id="idChartContainer" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" showLegend="true"
-					contentChange="attachContentChange" >
+						contentChange="attachContentChange">
 						<ui.com:dimensionSelectors>
-							<Select id="idoSelectEing" change="handleSelectionChangeLastschrift">
-							    <core:Item key="0" text="Alle"/>
-								<core:Item key="1" text="Lastschrift"/>
-								<core:Item key="2" text="Kreditkarte"/>
-								<core:Item key="3" text="Verrechnungscheck"/>
-								<core:Item key="4" text="PayPal"/>
+							<Select id="idoSelectEing" items="{path:'/paymentArts'}" change="handleSelectionChangeZahleingang">
+								<core:Item key="{key}" text="{text}"/>
 							</Select>
 						</ui.com:dimensionSelectors>
 					</ui.com:ChartContainer>

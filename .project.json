@@ -2,7 +2,7 @@
   "hcpdeploy": {
     "account": "p1940381316trial",
     "name": "cckpi01",
-    "lastVersionWeTriedToDeploy": "1.0.7"
+    "lastVersionWeTriedToDeploy": "1.0.12"
   },
   "mockpreview": {
     "mockUri": "",
@@ -10,5 +10,12 @@
     "mockRequestsFilePath": "",
     "loadJSONFiles": true,
     "loadCustomRequests": false
+  },
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "",
+    "defaultLanguage": "",
+    "defaultI18NPropertyFile": "",
+    "resourceModelName": ""
   }
 }

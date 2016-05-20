@@ -8,24 +8,6 @@
       "ui5ActiveVersion": null,
       "ui5VerSource": null,
       "isDefaultVersion": 0,
-      "urlParameters": [],
-      "urlParametersNotNeeded": false,
-      "hashParameter": "",
-      "backendSystem": [],
-      "_metadata": {
-        "id": 2066433,
-        "runnerId": "webapprunner",
-        "displayName": "Run with index1"
-      }
-    },
-    {
-      "filePath": "/webapp/index.html",
-      "previewMode": 0,
-      "dataMode": 1,
-      "workspace": "withoutWorkspace",
-      "ui5ActiveVersion": null,
-      "ui5VerSource": null,
-      "isDefaultVersion": 0,
       "urlParameters": [
         {
           "paramName": "",
@@ -36,7 +18,7 @@
       "hashParameter": "",
       "backendSystem": [],
       "_metadata": {
-        "id": 4600876,
+        "id": 5148986,
         "runnerId": "webapprunner",
         "displayName": "Run CCKPI01"
       }

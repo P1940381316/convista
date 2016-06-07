@@ -23,6 +23,7 @@
 					</Panel>
 				</l:fixContent>
 				<l:flexContent>
+						<viz:Popover id="idPopOverIncoming"></viz:Popover>
 					<ui.com:ChartContainer id="idChartContainer" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" showLegend="true"
 						contentChange="attachContentChange">
 						<ui.com:dimensionSelectors>

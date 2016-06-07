@@ -10,11 +10,13 @@
 							<VBox class='vboxKPI' width="20%">
 								<ObjectIdentifier title="Anzahl Klärbestandsbuchungen" id="anzahlKlaerbestand"/>
 								 	<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'clarifcationCount' , formatter: '.number1formater' }"/>
+								 	<ObjectNumber class="sapUiSmallMarginBottom" number="{clarifcationCountQuote}" unit = "%" />	
 							</VBox>
 							<VBox width="10px"></VBox>
 							<VBox class='vboxKPI' width="20%">
 								<ObjectIdentifier title="Volumen Klärbestandsbuchungen" id="volKlaerbestand"/>
 							 	<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'clarifcationVolume' , formatter: '.number1formater' }" unit="EURO"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{clarifcationVolumeQuote}" unit = "%" />	
 							</VBox>
 							<VBox width="10px"></VBox>
 							<VBox class='vboxKPI' width="20%">
@@ -25,6 +27,7 @@
 					</Panel>
 				</l:fixContent>
 				<l:flexContent>
+				  <viz:Popover id="idPopOverKlaer"></viz:Popover>
 					<ui.com:ChartContainer id="idChartContainerKlaer" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" showLegend="true"
 						contentChange="attachContentChange">
 						<ui.com:dimensionSelectors>

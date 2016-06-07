@@ -9,14 +9,15 @@
 						<HBox class="settingsHBox">
 							<VBox class='vboxKPI' width="20%">
 								<ObjectIdentifier title="Anzahl Lastschriften" id="anzahlLastschrift" />
-								    
 								<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'debitEntryCount' , formatter: '.number1formater' }"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{debitEntryCountQuote}" unit="%" />
 							</VBox>
 							<VBox width="10px">
 							</VBox>
 							<VBox class='vboxKPI' width="20%">
 								<ObjectIdentifier title="Volumen Lastschrifteinzüge" id="labellastschrift" />
 								<ObjectNumber class="sapUiSmallMarginBottom" number="{path: 'debitEntryVolume', formatter: '.number1formater' }" unit="EURO"/> 
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{debitEntryVolumeQuote}" unit="%" />
 							</VBox>
 								<VBox width="10px">
 							</VBox>
@@ -28,6 +29,7 @@
 					</Panel>
 				</l:fixContent>
 				<l:flexContent>
+					<viz:Popover id="idPopOverLast"></viz:Popover>
 					<ui.com:ChartContainer id="idCombinedChartContainerLast" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" showLegend="true"
 						contentChange="attachContentChange">
 						<ui.com:dimensionSelectors>

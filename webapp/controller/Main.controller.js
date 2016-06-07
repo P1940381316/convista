@@ -38,12 +38,11 @@ sap.ui.define([
 				this.getView().byId("settingsPanel").setExpanded(false);
 			}
 		},
-		/**
-		 * ab hier Eingangsarten Lastschrift, Kreditkarte , etc.
-		 */
 
-		initializeEingansArt: function(paymentArt) {
-			var oVizFrameEingang = new sap.viz.ui5.controls.VizFrame({
+		generateVizFrame: function() {
+			var oVizFrameKompl1;
+			// Stacked bar chart vizframe
+			oVizFrameKompl1 = new sap.viz.ui5.controls.VizFrame({
 				height: "100%",
 				width: "100%",
 				uiConfig: {
@@ -54,8 +53,12 @@ sap.ui.define([
 						dataLabel: {
 							formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2,
 							visible: true
+						},
+						dataShape: {
+							primaryAxis: ["line", "bar", "bar"]
 						}
 					},
+
 					legend: {
 						"visible": true
 					},
@@ -72,11 +75,21 @@ sap.ui.define([
 							formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2
 						},
 						title: {
+
 							"visible": false
 						}
 					}
 				}
 			});
+			return oVizFrameKompl1;
+		},
+
+		/**
+		 * ab hier Eingangsarten Lastschrift, Kreditkarte , etc.
+		 */
+
+		initializeEingansArt: function(paymentArt) {
+			var oVizFrameEingang = this.generateVizFrame();
 
 			var oModelEingang = new JSONModel("model/LineEingangs.json");
 			oModelEingang.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
@@ -139,41 +152,7 @@ sap.ui.define([
 				oDatasetKompl1,
 				oFeedAxisLabelsKompl1;
 			// Stacked bar chart vizframe
-			oVizFrameKompl1 = new sap.viz.ui5.controls.VizFrame({
-				height: "100%",
-				width: "100%",
-				uiConfig: {
-					applicationSet: "fiori"
-				},
-				vizProperties: {
-					plotArea: {
-						dataLabel: {
-							formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2,
-							visible: true
-						}
-					},
-					legend: {
-						"visible": true
-					},
-					title: {
-						"visible": false
-					},
-					categoryAxis: {
-						title: {
-							"visible": false
-						}
-					},
-					valueAxis: {
-						label: {
-							formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2
-						},
-						title: {
-
-							"visible": false
-						}
-					}
-				}
-			});
+			oVizFrameKompl1 = this.generateVizFrame();
 
 			oModelKompl1 = new sap.ui.model.json.JSONModel("model/LineEingangsKomplett.json");
 			var panelKompl = this.getView().byId("panelKompl");
@@ -262,68 +241,59 @@ sap.ui.define([
 		// ab hier Bar Line Chart Lastschrift
 		initializeLSVLastschrift: function(timeRange) {
 			//	var timeRange = "Aktuell";
-			var oVizFrameLSVLastSchrift = new sap.viz.ui5.controls.VizFrame({
-				height: "100%",
-				width: "100%",
-				uiConfig: {
-					applicationSet: "fiori"
-				},
-				vizProperties: {
-					plotArea: {
-						dataLabel: {
-							formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2,
-							visible: true
-						}
-					},
-					valueAxis: {
-						label: {
-							formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2
-						},
-						title: {
-							visible: false
-						}
-					},
-					categoryAxis: {
-						title: {
-							visible: false
-						}
-					},
-					title: {
-						visible: false,
-						text: "Lastschrift"
-					}
-				}
-			});
+			var oVizFrameLSVLastSchrift = this.generateVizFrame();
 			var dataModelLSVLast = new JSONModel("model/BarLineLastschrift.json");
 			dataModelLSVLast.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
 			var panelLSVLast = this.getView().byId("panelDebitEntry");
 			panelLSVLast.setModel(dataModelLSVLast);
 			panelLSVLast.bindElement("/" + timeRange);
+			var oDatasetLSVLast;
+			if (timeRange === "Aktuell") {
+				oDatasetLSVLast = new sap.viz.ui5.data.FlattenedDataset({
+					dimensions: [{
+						name: "month",
+						value: "{month}"
+					}],
+					measures: [{
+						name: "Anzahl Lastschrift",
+						value: "{anzahlLastschrift}"
+					}, {
+						name: "Volumen Lastschrift",
+						value: "{volumenLastschrift}"
+					}],
+					data: {
+						path: "/" + timeRange + "/Lastschrift"
+					}
+				});
+			} else {
+				oDatasetLSVLast = new sap.viz.ui5.data.FlattenedDataset({
+					dimensions: [{
+						name: "month",
+						value: "{month}"
+					}],
+					measures: [{
+						name: "Volumen Lastschrift",
+						value: "{volumenLastschrift}"
+					}, {
+						name: "Anzahl Lastschrift",
+						value: "{anzahlLastschrift}"
+					}, {
+						name: "Anzahl Lastschrift " + timeRange,
+						value: "{anzahlLastschriftEqual}"
+					}],
+					data: {
+						path: "/" + timeRange + "/Lastschrift"
+					}
+				});
+			}
 
-			var oDatasetLSVLast = new sap.viz.ui5.data.FlattenedDataset({
-				dimensions: [{
-					name: "month",
-					value: "{month}"
-				}],
-				measures: [{
-					name: "Anzahl Lastschrift",
-					value: "{anzahlLastschrift}"
-				}, {
-					name: "Volumen Lastschrift",
-					value: "{volumenLastschrift}"
-				}],
-				data: {
-					path: "/" + timeRange + "/Lastschrift"
-				}
-			});
-
-			var oFeedPrimaryValuesEing1 = new sap.viz.ui5.controls.common.feeds.FeedItem({
+			var oFeedPrimaryValuesEing2 = new sap.viz.ui5.controls.common.feeds.FeedItem({
 				uid: "valueAxis",
 				type: "Measure",
 				values: "Anzahl Lastschrift"
 			});
 
-			var oFeedPrimaryValuesEing2 = new sap.viz.ui5.controls.common.feeds.FeedItem({
+			var oFeedPrimaryValuesEing1 = new sap.viz.ui5.controls.common.feeds.FeedItem({
 				uid: "valueAxis",
 				type: "Measure",
 				values: "Volumen Lastschrift"
@@ -334,19 +304,34 @@ sap.ui.define([
 				type: "Dimension",
 				values: "month"
 			});
+			var oFeedPrimaryValuesEing3;
 
+			//jQuery.sap.log.error("timeRange: " + timeRange);
+
+			if (timeRange !== "Aktuell") {
+				oFeedPrimaryValuesEing3 = new sap.viz.ui5.controls.common.feeds.FeedItem({
+					uid: "valueAxis",
+					type: "Measure",
+					values: "Anzahl Lastschrift " + timeRange
+				});
+			}
 			oVizFrameLSVLastSchrift.setDataset(oDatasetLSVLast);
 			oVizFrameLSVLastSchrift.setModel(dataModelLSVLast);
 			oVizFrameLSVLastSchrift.addFeed(oFeedPrimaryValuesEing1);
 			oVizFrameLSVLastSchrift.addFeed(oFeedPrimaryValuesEing2);
+
+			if (timeRange !== "Aktuell") {
+				oVizFrameLSVLastSchrift.addFeed(oFeedPrimaryValuesEing3);
+			}
+
 			oVizFrameLSVLastSchrift.addFeed(oFeedAxisLabelsEing);
 			oVizFrameLSVLastSchrift.setVizType("combination");
 			this._oVizFrameLSVLastschrift = oVizFrameLSVLastSchrift;
-			/*
-						var oPopOverBarLine = this.getView().byId("idPopOverBarLine");
-						oPopOverBarLine.connect(oVizFrameBarLine.getVizUid());
-						oPopOverBarLine.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
-			*/
+
+			var oPopOverBarLine = this.getView().byId("idPopOverLast");
+			oPopOverBarLine.connect(oVizFrameLSVLastSchrift.getVizUid());
+			oPopOverBarLine.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
+
 		},
 		/** 
 		 * hier die Anzeige des Lastschrift Charts
@@ -369,68 +354,42 @@ sap.ui.define([
 		// ab hier Bar Line Chart Rückläufer
 		initializeRefusal: function(timeRange) {
 			//	var timeRange = "Aktuell";
-			var oVizFrameRefusal = new sap.viz.ui5.controls.VizFrame({
-				height: "100%",
-				width: "100%",
-				uiConfig: {
-					applicationSet: "fiori"
-				},
-				vizProperties: {
-					plotArea: {
-						dataLabel: {
-							formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2,
-							visible: true
-						}
-					},
-					valueAxis: {
-						label: {
-							formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2
-						},
-						title: {
-							visible: false
-						}
-					},
-					categoryAxis: {
-						title: {
-							visible: false
-						}
-					},
-					title: {
-						visible: false,
-						text: "Lastschrift"
-					}
-				}
-			});
+			var oVizFrameRefusal = this.generateVizFrame();
 			var dataModelRefusal = new JSONModel("model/BarLineRuecklaeufer.json");
 			dataModelRefusal.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
 			var panelRefusal = this.getView().byId("panelRefusal");
 			panelRefusal.setModel(dataModelRefusal);
 			panelRefusal.bindElement("/" + timeRange);
 
+			var sLabelVergleich =  "Anzahl Rücklastschrift " + timeRange;
 			var oDatasetRefusal = new sap.viz.ui5.data.FlattenedDataset({
 				dimensions: [{
 					name: "month",
 					value: "{month}"
 				}],
-				measures: [{
+				measures: [
+					{
+					name: "Volumen Rücklastschrift",
+					value: "{volumenRücklastschrift}"
+				},{
 					name: "Anzahl Rücklastschrift",
 					value: "{anzahlRücklastschrift}"
 				}, {
-					name: "Volumen Rücklastschrift",
-					value: "{volumenRücklastschrift}"
+					name: sLabelVergleich,
+					value: "{anzahlRücklastschriftEqual}"
 				}],
 				data: {
 					path: "/" + timeRange + "/Rückläufer"
 				}
 			});
 
-			var oFeedPrimaryValuesEing1 = new sap.viz.ui5.controls.common.feeds.FeedItem({
+			var oFeedPrimaryValuesEing2 = new sap.viz.ui5.controls.common.feeds.FeedItem({
 				uid: "valueAxis",
 				type: "Measure",
 				values: "Anzahl Rücklastschrift"
 			});
 
-			var oFeedPrimaryValuesEing2 = new sap.viz.ui5.controls.common.feeds.FeedItem({
+			var oFeedPrimaryValuesEing1 = new sap.viz.ui5.controls.common.feeds.FeedItem({
 				uid: "valueAxis",
 				type: "Measure",
 				values: "Volumen Rücklastschrift"
@@ -441,19 +400,32 @@ sap.ui.define([
 				type: "Dimension",
 				values: "month"
 			});
+			var oFeedPrimaryValuesEing3;
+			if (timeRange !== "Aktuell") {
+
+				oFeedPrimaryValuesEing3 = new sap.viz.ui5.controls.common.feeds.FeedItem({
+					uid: "valueAxis",
+					type: "Measure",
+					values: sLabelVergleich
+				});
+			}
 
 			oVizFrameRefusal.setDataset(oDatasetRefusal);
 			oVizFrameRefusal.setModel(dataModelRefusal);
 			oVizFrameRefusal.addFeed(oFeedPrimaryValuesEing1);
 			oVizFrameRefusal.addFeed(oFeedPrimaryValuesEing2);
+			if (timeRange !== "Aktuell") {
+				oVizFrameRefusal.addFeed(oFeedPrimaryValuesEing3);
+			}
+
 			oVizFrameRefusal.addFeed(oFeedAxisLabelsEing);
 			oVizFrameRefusal.setVizType("combination");
 			this._oVizFrameRefusal = oVizFrameRefusal;
-			/*
-						var oPopOverBarLine = this.getView().byId("idPopOverBarLine");
-						oPopOverBarLine.connect(oVizFrameBarLine.getVizUid());
-						oPopOverBarLine.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
-			*/
+			
+			var oPopOverBarLine = this.getView().byId("idPopOverRueck");
+			oPopOverBarLine.connect(oVizFrameRefusal.getVizUid());
+			oPopOverBarLine.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
+			
 		},
 
 		showRefusal: function() {
@@ -474,68 +446,47 @@ sap.ui.define([
 		// ab hier Bar Line Chart Rückläufer
 		initializeKlaer: function(timeRange) {
 			//	var timeRange = "Aktuell";
-			var oVizFrameKlaer = new sap.viz.ui5.controls.VizFrame({
-				height: "100%",
-				width: "100%",
-				uiConfig: {
-					applicationSet: "fiori"
-				},
-				vizProperties: {
-					plotArea: {
-						dataLabel: {
-							formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2,
-							visible: true
-						}
-					},
-					valueAxis: {
-						label: {
-							formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2
-						},
-						title: {
-							visible: false
-						}
-					},
-					categoryAxis: {
-						title: {
-							visible: false
-						}
-					},
-					title: {
-						visible: false,
-						text: "Lastschrift"
-					}
-				}
-			});
+			var oVizFrameKlaer = this.generateVizFrame();
 			var dataModelKlaer = new JSONModel("model/BarLineKlaerbestand.json");
 			dataModelKlaer.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
 			var panelKlaer = this.getView().byId("panelKlaer");
 			panelKlaer.setModel(dataModelKlaer);
 			panelKlaer.bindElement("/" + timeRange);
 
+		var sLabelVergleich =  "Anzahl Klärbestand " + timeRange;
 			var oDatasetKlaer = new sap.viz.ui5.data.FlattenedDataset({
 				dimensions: [{
 					name: "month",
 					value: "{month}"
 				}],
 				measures: [{
+					name: "Volumen Klärbestand",
+					value: "{volumenKlaerbestand}"
+				}, {
 					name: "Anzahl Klärbestand",
 					value: "{anzahlKlaerbestand}"
 				}, {
-					name: "Volumen Klärbestand",
-					value: "{volumenKlaerbestand}"
+					name: sLabelVergleich,
+					value: "{anzahlKlaerbestandEqual}"
 				}],
 				data: {
 					path: "/" + timeRange + "/Klärbestand"
 				}
 			});
 
-			var oFeedPrimaryValuesEing1 = new sap.viz.ui5.controls.common.feeds.FeedItem({
+			var oFeedPrimaryValuesEing2 = new sap.viz.ui5.controls.common.feeds.FeedItem({
 				uid: "valueAxis",
 				type: "Measure",
 				values: "Anzahl Klärbestand"
 			});
 
-			var oFeedPrimaryValuesEing2 = new sap.viz.ui5.controls.common.feeds.FeedItem({
+			var oFeedPrimaryValuesEing3 = new sap.viz.ui5.controls.common.feeds.FeedItem({
+				uid: "valueAxis",
+				type: "Measure",
+				values: sLabelVergleich
+			});
+
+			var oFeedPrimaryValuesEing1 = new sap.viz.ui5.controls.common.feeds.FeedItem({
 				uid: "valueAxis",
 				type: "Measure",
 				values: "Volumen Klärbestand"
@@ -551,14 +502,19 @@ sap.ui.define([
 			oVizFrameKlaer.setModel(dataModelKlaer);
 			oVizFrameKlaer.addFeed(oFeedPrimaryValuesEing1);
 			oVizFrameKlaer.addFeed(oFeedPrimaryValuesEing2);
+			
+			if (timeRange !== "Aktuell") {
+				oVizFrameKlaer.addFeed(oFeedPrimaryValuesEing3);
+			}
+			
 			oVizFrameKlaer.addFeed(oFeedAxisLabelsEing);
 			oVizFrameKlaer.setVizType("combination");
 			this._oVizFrameKlaer = oVizFrameKlaer;
-			/*
-						var oPopOverBarLine = this.getView().byId("idPopOverBarLine");
-						oPopOverBarLine.connect(oVizFrameBarLine.getVizUid());
-						oPopOverBarLine.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
-			*/
+
+			var oPopOverBarLine = this.getView().byId("idPopOverKlaer");
+			oPopOverBarLine.connect(oVizFrameKlaer.getVizUid());
+			oPopOverBarLine.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
+
 		},
 
 		showKlaer: function() {
@@ -610,7 +566,7 @@ sap.ui.define([
 
 		handleSelectionChangeZahleingang: function(oEvent) {
 			var oItem = oEvent.getParameter("selectedItem");
-		    jQuery.sap.log.error ("selectedItem: " + oItem.getText());
+			jQuery.sap.log.error("selectedItem: " + oItem.getText());
 			if (oItem.getKey() !== "0") {
 				this.initializeEingansArt(oItem.getText());
 				this.showZahlEingang();

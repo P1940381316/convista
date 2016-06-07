@@ -55,113 +55,142 @@
 		}]
 	},
 	"Vorjahr": {
-		"refusalCount": 232333,
-		"refusalVolume": 8232232,
-		"refusalVolumsCharge": 135872,
-		"refusalVolumsQuote": 0.6,
+		"refusalCount": 42333,
+		"refusalCountQuote" : "12",
+		"refusalVolume": 21232232,
+		"refusalVolumeQuote" : "9.2",
+		"refusalVolumsCharge": 235872,
+		"refusalVolumsChargeQuote" : "3.3", 
+		"refusalVolumsQuote": 0.3,
 		"Rückläufer": [{
 			"month": "Jan",
-			"volumenRücklastschrift": "138626",
-			"anzahlRücklastschrift": "14235"
+			"volumenRücklastschrift": "38626",
+			"anzahlRücklastschrift": "14235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Feb",
-			"volumenRücklastschrift": "131160",
-			"anzahlRücklastschrift": "18235"
+			"volumenRücklastschrift": "31160",
+			"anzahlRücklastschrift": "18235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Mrz",
-			"volumenRücklastschrift": "185105",
-			"anzahlRücklastschrift": "16235"
+			"volumenRücklastschrift": "85105",
+			"anzahlRücklastschrift": "16235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Apr",
-			"volumenRücklastschrift": "149378",
-			"anzahlRücklastschrift": "12835"
+			"volumenRücklastschrift": "49378",
+			"anzahlRücklastschrift": "12835",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Mai",
-			"volumenRücklastschrift": "157401",
+			"volumenRücklastschrift": "57401",
 			"anzahlRücklastschrift": "19235"
 		}, {
 			"month": "Juni",
-			"volumenRücklastschrift": "117401",
-			"anzahlRücklastschrift": "17935"
+			"volumenRücklastschrift": "17401",
+			"anzahlRücklastschrift": "17935",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Juli",
-			"volumenRücklastschrift": "117401",
-			"anzahlRücklastschrift": "17280"
+			"volumenRücklastschrift": "17401",
+			"anzahlRücklastschrift": "17280",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Aug",
-			"volumenRücklastschrift": "137401",
-			"anzahlRücklastschrift": "14235"
+			"volumenRücklastschrift": "37401",
+			"anzahlRücklastschrift": "14235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Sep",
-			"volumenRücklastschrift": "217401",
-			"anzahlRücklastschrift": "15235"
+			"volumenRücklastschrift": "17401",
+			"anzahlRücklastschrift": "15235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Okt",
-			"volumenRücklastschrift": "117401",
-			"anzahlRücklastschrift": "19935"
+			"volumenRücklastschrift": "17401",
+			"anzahlRücklastschrift": "19935",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Nov",
-			"volumenRücklastschrift": "132408",
-			"anzahlRücklastschrift": "15235"
+			"volumenRücklastschrift": "32408",
+			"anzahlRücklastschrift": "15235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Dez",
-			"volumenRücklastschrift": "112408",
-			"anzahlRücklastschrift": "15235"
+			"volumenRücklastschrift": "12408",
+			"anzahlRücklastschrift": "15235",
+			"anzahlRücklastschriftEqual": "16235"
 		}]
 	},
 	"Vorperiode": {
-		"refusalCount": 12333,
-		"refusalVolume": 41562732,
-		"refusalVolumsCharge": 1398872,
-		"refusalVolumsQuote": 0.4,
+		"refusalCount": 42333,
+		"refusalCountQuote" : "11.8",
+		"refusalVolume": 21232232,
+		"refusalVolumeQuote" : "9.8",
+		"refusalVolumsCharge": 235872,
+		"refusalVolumsChargeQuote" : "3.8", 
+		"refusalVolumsQuote": 0.3,
 		"Rückläufer": [{
 			"month": "Jan",
-			"volumenRücklastschrift": "348626",
-			"anzahlRücklastschrift": "16235"
+			"volumenRücklastschrift": "48626",
+			"anzahlRücklastschrift": "16235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Feb",
-			"volumenRücklastschrift": "91160",
-			"anzahlRücklastschrift": "15235"
+			"volumenRücklastschrift": "19160",
+			"anzahlRücklastschrift": "15235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Mrz",
-			"volumenRücklastschrift": "385105",
-			"anzahlRücklastschrift": "15235"
+			"volumenRücklastschrift": "85105",
+			"anzahlRücklastschrift": "15235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Apr",
-			"volumenRücklastschrift": "689378",
-			"anzahlRücklastschrift": "17835"
+			"volumenRücklastschrift": "89378",
+			"anzahlRücklastschrift": "17835",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Mai",
-			"volumenRücklastschrift": "927401",
-			"anzahlRücklastschrift": "19235"
+			"volumenRücklastschrift": "27401",
+			"anzahlRücklastschrift": "19235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Juni",
-			"volumenRücklastschrift": "317401",
-			"anzahlRücklastschrift": "14935"
+			"volumenRücklastschrift": "27401",
+			"anzahlRücklastschrift": "14935",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Juli",
-			"volumenRücklastschrift": "117401",
-			"anzahlRücklastschrift": "13280"
+			"volumenRücklastschrift": "37401",
+			"anzahlRücklastschrift": "13280",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Aug",
-			"volumenRücklastschrift": "187401",
-			"anzahlRücklastschrift": "14235"
+			"volumenRücklastschrift": "87401",
+			"anzahlRücklastschrift": "14235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Sep",
-			"volumenRücklastschrift": "197401",
-			"anzahlRücklastschrift": "11235"
+			"volumenRücklastschrift": "97401",
+			"anzahlRücklastschrift": "11235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Okt",
-			"volumenRücklastschrift": "317401",
-			"anzahlRücklastschrift": "14935"
+			"volumenRücklastschrift": "47401",
+			"anzahlRücklastschrift": "14935",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Nov",
-			"volumenRücklastschrift": "432408",
-			"anzahlRücklastschrift": "12235"
+			"volumenRücklastschrift": "32408",
+			"anzahlRücklastschrift": "12235",
+			"anzahlRücklastschriftEqual": "16235"
 		}, {
 			"month": "Dez",
-			"volumenRücklastschrift": "512408",
-			"anzahlRücklastschrift": "12235"
+			"volumenRücklastschrift": "42408",
+			"anzahlRücklastschrift": "12235",
+			"anzahlRücklastschriftEqual": "16235"
 		}]
 	}
 }

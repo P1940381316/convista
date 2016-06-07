@@ -9,29 +9,33 @@
 						<HBox class="settingsHBox">
 							<VBox class='vboxKPI' width="15%">
 								<ObjectIdentifier title="Anzahl Rücklastschriften" id="anzahlRuecklast" class="settingsLabel"/>
-							   	<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'refusalCount' , formatter: '.number1formater' }"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'refusalCount' , formatter: '.number1formater' }"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{refusalCountQuote}" unit = "%" />	
 							</VBox>
 							<VBox width="10px"></VBox>
 							<VBox class='vboxKPI' width="15%">
 								<ObjectIdentifier title="Volumen Lastschrifteinzüge" id="volLastschrift" class="settingsLabel"/>
 								<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'refusalVolume' , formatter: '.number1formater' }" unit="EURO"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{refusalVolumeQuote}" unit = "%" />	
 							</VBox>
 							<VBox width="10px"></VBox>
 							<VBox class='vboxKPI' width="15%">
 								<ObjectIdentifier title="Volumen Rückläufergebühr" id="ruechlaeufergeb" class="settingsLabel"/>
 								<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'refusalVolumsCharge' , formatter: '.number1formater' }" unit="EURO"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{refusalVolumsChargeQuote}" unit = "%" />
 							</VBox>
 							<VBox width="10px"></VBox>
 							<VBox class='vboxKPI' width="15%">
 								<ObjectIdentifier title="Volumen Rückläufer - Quote" id="labelquote2" class="settingsLabel"/>
-									<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'refusalVolumsQuote' , formatter: '.number1formater' }" unit="EURO"/>
+								<ObjectNumber class="sapUiSmallMarginBottom" number="{path : 'refusalVolumsQuote' , formatter: '.number1formater' }" unit="EURO"/>
 							</VBox>
 						</HBox>
 					</Panel>
 				</l:fixContent>
 				<l:flexContent>
-					<ui.com:ChartContainer id="idChartContainerRueck" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" showLegend="true"
-						contentChange="attachContentChange">
+					<viz:Popover id="idPopOverRueck"></viz:Popover>
+					<ui.com:ChartContainer id="idChartContainerRueck" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
+						showLegend="true" contentChange="attachContentChange">
 						<ui.com:dimensionSelectors>
 							<Select id="idoSelectRefusal" change="handleSelectionChangeRueck">
 								<core:Item key="0" text="Aktuell"/>
